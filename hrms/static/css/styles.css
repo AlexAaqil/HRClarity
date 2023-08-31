@@ -1,0 +1,151 @@
+* {
+  font-family: sans-serif, Arial, Helvetica;
+  padding: 0;
+  margin: 0;
+}
+
+nav,
+nav .container,
+nav .container ul {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  background: #fff;
+  box-shadow: 1px 1px 10px rgb(129, 129, 129);
+  height: 8vh;
+  position: sticky;
+  top: 0;
+}
+nav .container {
+  justify-content: space-between;
+}
+nav .container a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+nav .container a:hover {
+  color: rgb(13, 167, 218);
+}
+nav .container ul {
+  list-style-type: none;
+  margin: 0;
+}
+nav .container ul li {
+  margin: 0 1em;
+}
+nav .container ul li .action_btn {
+  border: 1px solid black;
+  border-radius: 32px;
+  padding: 6px 20px;
+}
+nav .container ul li .action_btn:hover {
+  background: #c33764;
+  color: white;
+  border: 1px solid #c33764;
+  transition: background 0.5s ease-in-out;
+}
+
+.Homepage .hero_section {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #c33764; /* fallback colour. Make sure this is just one solid colour. */
+  background: linear-gradient(rgba(29, 38, 113, 0.8), rgba(195, 55, 100, 0.8)), url("../images/app_background.jpg"); /* The least supported option. */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.Homepage .hero_section h1,
+.Homepage .hero_section p {
+  color: #fff;
+  font-weight: bold;
+}
+.Homepage .hero_section h1 {
+  font-size: 2.6em;
+}
+.Homepage .hero_section p {
+  font-size: 1.3em;
+}
+
+.Features {
+  padding: 2em 2.5em;
+}
+.Features .feature {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2em;
+  margin: 0 0 3em;
+}
+.Features .feature .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Features .feature .image img {
+  width: 100%;
+}
+.Features .feature:nth-of-type(2) {
+  grid-template-columns: 2fr 1fr;
+}
+.Features .feature:nth-of-type(2) .image {
+  order: -1;
+}
+
+.About {
+  padding: 1em 2.5em;
+}
+.About ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5em;
+}
+.About ul li a {
+  font-size: 1.8em;
+}
+.About .inspiration {
+  margin: 0 0 3em;
+}
+.About .inspiration p {
+  margin: 4px 0;
+}
+.About .socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+footer {
+  background: #000;
+  color: #fff;
+  padding: 1em 0;
+  text-align: center;
+}
+footer p {
+  margin: unset;
+}
+
+.Authentication {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Authentication form h1 {
+  border-bottom: 1px solid rgb(214, 214, 214);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em 0;
+  margin: 0 0 0.5em;
+}
+.Authentication .login {
+  width: 30%;
+  margin: auto;
+}/*# sourceMappingURL=styles.css.map */

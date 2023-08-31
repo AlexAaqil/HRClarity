@@ -1,0 +1,29 @@
+{% extends "main_layout.html" %}
+
+{% block body %}
+<section class="Authentication">
+    <div class="container login">
+        <div class="body">
+            <form action="" method="post">
+                <h1>{{ page_title }}</h1>
+
+                {{ csrf }}
+
+                <div class="form-group">
+                    {{ form.email_address.label }}
+                    {{ form.email_address }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit }}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock body %}
