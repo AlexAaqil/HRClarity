@@ -26,6 +26,9 @@
 ```
 pip install -r requirements.txt
 ```
+- create a .env file with variables as shown below:
+`SECRET_KEY=your_secretkey
+SQLALCHEMY_DATABASE_URI=dbURI_example:- sqlite:///hrms.db`
 
 # Usage
 - xxx
