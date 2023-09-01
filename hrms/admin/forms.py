@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, NumberField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from hrms.models import Admin
 
@@ -21,3 +21,12 @@ class AdminLogin(FlaskForm):
     email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"placeholder":"Email Address", "class":"form-control"})
     password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder":"Password", "class":"form-control"})
     submit = SubmitField('Login', render_kw={"class":"btn btn-primary btn-block"})
+
+
+class AddEmployee(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()], render_kw={"placeholder":"First Name", "class":"form-control"})
+    last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"placeholder":"Last Name", "class":"form-control"})
+    email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"placeholder":"Email Address", "class":"form-control"})
+    national_id = NumberField('National ID', validators=[DataRequired()], render_kw={"placeholder":"National ID", "class":"form-control"})
+    phone_number = StringField('Phone Number', validators=[DataRequired()], render_kw={"placeholder":"Phone Number", "class":"form-control"})
+    department = StringField('Department', validators=[DataRequired], render_kw={"placeholder":"Select a Department", "class":"form-control"})
