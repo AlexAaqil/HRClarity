@@ -11,6 +11,7 @@ nav {
   height: 8vh;
   position: sticky;
   top: 0;
+  z-index: 10;
 
   .container {
     justify-content: space-between;
@@ -127,18 +128,6 @@ nav {
         font-size: 1.8em;
       }
     }
-  }
-
-  .inspiration {
-    margin: 0 0 3em;
-    p {
-      margin: 4px 0;
-    }
-  }
-
-  .socials {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
 }
 

@@ -1,0 +1,23 @@
+.Employees {
+  .header {
+    background: #fff;
+    position: sticky;
+    top: 0;
+  }
+
+  .employees_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+
+    .employee {
+      background: rgb(245, 244, 244);
+      border-radius: 12px;
+
+      img {
+        width: 60px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

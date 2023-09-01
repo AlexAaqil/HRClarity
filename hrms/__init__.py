@@ -1,11 +1,38 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+from hrms.config import Config
 
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'thequickbrownfox'
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
+login_manager.login_view = 'admin.login'
 
 
-from hrms.main.routes import main
-from hrms.employee.routes import employee
-app.register_blueprint(main)
-app.register_blueprint(employee)
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+
+    from hrms.main.routes import main
+    from hrms.employee.routes import employee
+    from hrms.admin.routes import admin
+    app.register_blueprint(main)
+    app.register_blueprint(employee)
+    app.register_blueprint(admin)
+
+    from hrms.models import Admin
+    create_database(app)
+
+    return app
+
+
+
+def create_database(app):
+    with app.app_context():
+        db.create_all()

@@ -17,6 +17,7 @@ nav {
   height: 8vh;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 nav .container {
   justify-content: space-between;
@@ -109,16 +110,6 @@ nav .container ul li .action_btn:hover {
 .About ul li a {
   font-size: 1.8em;
 }
-.About .inspiration {
-  margin: 0 0 3em;
-}
-.About .inspiration p {
-  margin: 4px 0;
-}
-.About .socials {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 
 footer {
   background: #000;
@@ -145,7 +136,98 @@ footer p {
   padding: 0.5em 0;
   margin: 0 0 0.5em;
 }
-.Authentication .login {
-  width: 30%;
-  margin: auto;
+
+@media screen and (width >= 924px) {
+  .Authentication .login {
+    width: 30%;
+    margin: auto;
+  }
+}
+.app {
+  background: blue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.app aside {
+  width: 12%;
+  height: 100%;
+  padding: 0.5em 0.8em;
+  color: #fff;
+}
+.app aside h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+.app aside .links ul {
+  list-style: none;
+}
+.app aside .links ul li {
+  margin: 0.3em 0;
+  font-size: 0.95em;
+  padding: 6px;
+}
+.app aside .links ul li:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+.app aside .links ul li a {
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+}
+.app aside .links ul:nth-of-type(1) {
+  margin: 2em 0;
+}
+.app aside .links ul:nth-of-type(2) {
+  position: absolute;
+  bottom: 1em;
+}
+.app aside .links .icon {
+  margin: 0 0.3em 0 0;
+}
+.app main {
+  width: 88%;
+  border-radius: 16px;
+  height: 99vh;
+  overflow-y: scroll;
+  z-index: 5;
+}
+.app main .container {
+  background: #fff;
+  height: 100%;
+}
+
+.Dashboard .dashboard_wrapper {
+  height: 100%;
+}
+.Dashboard .dashboard_wrapper .hero {
+  height: 40%;
+  display: grid;
+  place-items: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.Dashboard .dashboard_wrapper .hero img {
+  width: 230px;
+}
+
+.Employees .header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+.Employees .employees_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+.Employees .employees_wrapper .employee {
+  background: rgb(245, 244, 244);
+  border-radius: 12px;
+}
+.Employees .employees_wrapper .employee img {
+  width: 60px;
+  border-radius: 50%;
 }/*# sourceMappingURL=styles.css.map */

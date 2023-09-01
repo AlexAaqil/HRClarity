@@ -1,0 +1,17 @@
+.Dashboard {
+  .dashboard_wrapper {
+    height: 100%;
+
+    .hero {
+      height: 40%;
+      display: grid;
+      place-items: center;
+      align-items: center;
+      grid-template-columns: 1fr 1fr;
+
+      img {
+        width: 230px;
+      }
+    }
+  }
+}

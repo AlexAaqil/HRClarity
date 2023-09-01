@@ -1,0 +1,53 @@
+{% extends 'main_layout.html' %} {% block body %}
+<section class="app">
+  {% include 'admin/aside.html' %}
+  <main class="Employees">
+    <div class="container pt-2">
+      <div class="header p-2 d-flex justify-content-between align-items-center">
+        <h5>Employees (15)</h5>
+        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Employees..." class="form-control-sm">
+        <a href="{{ url_for('admin.add_employee') }}" class="btn btn-primary">New Employee</a>
+      </div>
+
+      <div class="employees_wrapper">
+        {% for employee in employees %}
+        <div class="employee searchable p-3">
+          <div class="actions border-bottom d-flex justify-content-between">
+            <span></span>
+            <div class="">
+              <span class="icon icon-pencil ml-2 text-primary"></span>
+              <span class="icon icon-trash ml-2 text-danger"></span>
+            </div>
+          </div>
+
+          <div class="details d-flex pt-2">
+            <img
+              src="{{ url_for('static', filename='images/dp.jpg') }}"
+              alt="Employee"
+            />
+            <div class="basic_info ml-3">
+              <p class="m-0">
+                {{ employee.first_name }} {{ employee.last_name }}
+              </p>
+              <p class="m-0">{{ employee.occupation }}</p>
+            </div>
+          </div>
+
+          <div class="more_info">
+            <p class="badge badge-primary">{{ employee.department }}</p>
+            <p class="m-0">
+              <span class="icon icon-envelope"></span> email@gmail.com
+            </p>
+            <p class="m-0">
+              <span class="icon icon-phone"></span> +254 746 055 485
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+</section>
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock body %}

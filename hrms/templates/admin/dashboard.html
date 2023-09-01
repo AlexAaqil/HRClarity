@@ -1,0 +1,38 @@
+{% extends 'main_layout.html' %}
+{% block body %}
+<section class="app">
+  {% include "admin/aside.html" %}
+
+  <main class="Dashboard">
+    <div class="container dashboard_wrapper p-4">
+      <div class="hero p-3">
+        <div class="text">
+          <h1>Hi {{ user.first_name }}!</h1>
+          <p>Here are some statistics for you</p>
+        </div>
+        <img
+          src="{{ url_for('static', filename='images/dashboard.png') }}"
+          alt="Dashboard"
+        />
+      </div>
+
+      <div class="container stats row pt-4">
+        <div class="stat col text-center">
+          <h1>326</h1>
+          <p>Employees</p>
+        </div>
+
+        <div class="stat col text-center">
+          <h1>20</h1>
+          <p>Leave Requests</p>
+        </div>
+
+        <div class="stat col text-center">
+          <h1>2</h1>
+          <p>Announcements</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+{% endblock body %}
