@@ -191,12 +191,12 @@ footer p {
   width: 88%;
   border-radius: 16px;
   height: 99vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 5;
 }
 .app main .container {
   background: #fff;
-  height: 100%;
+  padding-bottom: 12px;
 }
 
 .Dashboard .dashboard_wrapper {

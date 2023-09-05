@@ -53,15 +53,16 @@ $theme_color: blue;
   }
 
   main {
-    width: 100% - $aside_width;
+    width: calc(100% - $aside_width);
     border-radius: 16px;
     height: 99vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     z-index: 5;
+
 
     .container {
       background: #fff;
-      height: 100%;
+      padding-bottom: 12px;
     }
   }
 }

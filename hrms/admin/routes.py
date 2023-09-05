@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, current_user
 from hrms import db, bcrypt
-from hrms.admin.forms import AdminLogin, AdminSignup
-from hrms.models import Admin
+from hrms.admin.forms import AdminLoginForm, AdminSignupForm, AddEmployeeForm
+from hrms.models import Admin, Employee
 
 
 admin = Blueprint('admin', __name__)
@@ -11,7 +11,7 @@ admin = Blueprint('admin', __name__)
 @admin.route('/admin', methods=['GET', 'POST'])
 @admin.route('/admin/login', methods=['GET', 'POST'])
 def login():
-    form = AdminLogin()
+    form = AdminLoginForm()
     if form.validate_on_submit():
         admin = Admin.query.filter_by(email_address=form.email_address.data).first()
         if admin and bcrypt.check_password_hash(admin.password, form.password.data):
@@ -24,7 +24,7 @@ def login():
 
 @admin.route('/admin/signup', methods=['GET', 'POST'])
 def signup():
-    form = AdminSignup()
+    form = AdminSignupForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         admin = Admin(first_name=form.first_name.data, last_name=form.last_name.data, email_address=form.email_address.data, password=hashed_password)
@@ -37,12 +37,13 @@ def signup():
 
 @admin.route('/admin/dashboard')
 def admin_dashboard():
-    return render_template('admin/dashboard.html', page_title='Admin Dashboard', user=current_user)
+    employee_count = Employee.query.count()
+    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employee_count=employee_count, user=current_user)
 
 
 @admin.route('/admin/add_employee')
 def add_employee():
-    form = AdminSignup()
+    form = AddEmployeeForm()
     return render_template('add_employee.html', page_title='Add Employee', form=form, user=current_user)
 
 
