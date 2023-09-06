@@ -1,7 +1,8 @@
+from datetime import date
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, TextAreaField, DateField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
-from hrms.models import Admin, Department, Occupation, Announcement
+from hrms.models import Admin, Department, Occupation, Employee
 
 class SignupForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()], render_kw={"placeholder":"First Name", "class":"form-control"})
@@ -43,6 +44,18 @@ class EmployeeForm(FlaskForm):
 
         # Create choices for the SelectFields
         self.occupation.choices = [('none_selected', 'Select Occupation')] + [(str(occ.id), occ.name) for occ in occupations]
+
+    def validate_email_address(self, email_address):
+        employee = Employee.query.filter_by(email_address=email_address.data).first()
+        if employee:
+            raise ValidationError('An account with that email already exists!')
+
+    def validate_dob(form, field):
+        today = date.today()
+        age_limit_date = today.replace(year=today.year - 18)
+
+        if field.data > age_limit_date:
+            raise ValidationError('Must be at least 18 years old.')
 
 
 class DepartmentForm(FlaskForm):

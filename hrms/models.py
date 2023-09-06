@@ -5,7 +5,15 @@ from hrms import db, login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Admin.query.get(int(user_id))
+    admin = Admin.query.get(int(user_id))
+    if admin:
+        return admin
+
+    employee = Employee.query.get(int(user_id))
+    if employee:
+        return employee
+
+    return None
 
 
 class Department(db.Model):

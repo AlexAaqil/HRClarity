@@ -1,0 +1,40 @@
+<aside>
+  <h1>HRClarity</h1>
+  <div class="links">
+    <ul>
+      <li>
+        <a href="{{ url_for('employee.employee_dashboard') }}">
+            <span class="icon icon-home"></span>
+            <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="">
+            <span class="icon icon-car"></span>
+            <span>Leaves</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('admin.announcements') }}">
+            <span class="icon icon-speaker"></span>
+            <span>Announcements</span>
+        </a>
+      </li>
+
+    <ul>
+      <li>
+        <a href="">
+            <span class="icon icon-user"></span>
+            <span>{{ user.first_name }} {{ user.last_name }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('employee.logout') }}">
+            <span class="icon icon-power-off"></span>
+            <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>

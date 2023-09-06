@@ -8,7 +8,14 @@ from hrms.config import Config
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-login_manager.login_view = 'admin.login'
+login_manager.login_view = 'main.login'
+
+
+from hrms.employee.routes import employee_login_manager as employee_login_manager
+employee_login_manager.login_view = 'employee.employee_login'
+
+from hrms.hrm.routes import hrm_login_manager as hrm_login_manager
+hrm_login_manager.login_view = 'admin.admin_login'
 
 
 def create_app(config_class=Config):

@@ -1,0 +1,29 @@
+{% extends 'main_layout.html' %}
+{% block body %}
+<section class="app">
+  {% include "employee/aside.html" %}
+
+  <main class="Dashboard">
+    <div class="container dashboard_wrapper p-4">
+      <div class="hero container ">
+        <div class="text">
+          <h3>Hello {{ user.first_name }}!</h3>
+          <p class="text-secondary">Welcome to your dashboard</p>
+        </div>
+      </div>
+
+      <div class="container stats">
+        <div class="stat">
+          <h3>20</h3>
+          <a href="#" class="text-dark">Leaves</a>
+        </div>
+
+        <div class="stat">
+          <h3>{{ announcements_count }}</h3>
+          <a href="{{ url_for('admin.announcements') }}" class="text-dark">Announcements</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+{% endblock body %}
