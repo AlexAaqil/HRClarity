@@ -3,7 +3,7 @@ from wtforms import StringField, IntegerField, SelectField, DateField, PasswordF
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from hrms.models import Admin, Department, Occupation
 
-class AdminSignupForm(FlaskForm):
+class SignupForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()], render_kw={"placeholder":"First Name", "class":"form-control"})
     last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"placeholder":"Last Name", "class":"form-control"})
     email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"placeholder":"Email Address", "class":"form-control"})
@@ -17,31 +17,49 @@ class AdminSignupForm(FlaskForm):
             raise ValidationError('An account with that email already exists!')
 
 
-class AdminLoginForm(FlaskForm):
+class LoginForm(FlaskForm):
     email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"placeholder":"Email Address", "class":"form-control"})
     password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder":"Password", "class":"form-control"})
     submit = SubmitField('Login', render_kw={"class":"btn btn-primary btn-block"})
 
 
-class AddEmployeeForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired()])
-    last_name = StringField('Last Name', validators=[DataRequired()])
-    dob = DateField('Date of Birth', format='%d-%m-%Y', validators=[DataRequired()])
-    gender = SelectField('Gender', choices=[('Male', 'Male'), ('Female', 'Female'), ('Ohter', 'Other')], validators=[DataRequired()])
-    email_address = StringField('Email Address', validators=[DataRequired(), Email()])
-    phone_number = StringField('Phone Number', validators=[DataRequired()])
-    national_id = IntegerField('National ID', validators=[DataRequired()])
-    department = SelectField('Department', validators=[DataRequired()])
-    occupation = SelectField('Occupation', validators=[DataRequired()])
-    user_level = SelectField('User Level', choices=[(1, 'Employee'), (2, 'HR Manager'), (3, 'Admin')], validators=[DataRequired()])
+class EmployeeForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()], render_kw={"class":"form-control"})
+    last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"class":"form-control"})
+    dob = DateField('Date of Birth', validators=[DataRequired()], render_kw={"class":"form-control"})
+    gender = SelectField('Gender', choices=[('none_selected', 'Select Gender'), ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], validators=[DataRequired()], render_kw={"class":"form-control"})
+    email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"class":"form-control"})
+    phone_number = StringField('Phone Number', validators=[DataRequired()], render_kw={"class":"form-control"})
+    national_id = IntegerField('National ID', validators=[DataRequired()], render_kw={"class":"form-control"})
+    occupation = SelectField('Occupation', validators=[DataRequired()], render_kw={"class":"form-control"})
+    user_level = SelectField('User Level', choices=[('none_selected', 'Select User Level'), (1, 'Employee'), (2, 'Admin')], validators=[DataRequired()], render_kw={"class":"form-control"})
+    submit = SubmitField('Save Changes', render_kw={"class":"btn btn-primary btn-block"})
 
     def __init__(self):
-        super(AddEmployeeForm, self).__init__()
+        super(EmployeeForm, self).__init__()
 
-        # Fetch departments and occupations from the database
-        departments = Department.query.all()
+        # Fetch occupations from the database
         occupations = Occupation.query.all()
 
         # Create choices for the SelectFields
-        self.department.choices = [(dept.id, dept.name) for dept in departments]
-        self.occupation.choices = [(occ.id, occ.name) for occ in occupations]
+        self.occupation.choices = [('none_selected', 'Select Occupation')] + [(str(occ.id), occ.name) for occ in occupations]
+
+
+class DepartmentForm(FlaskForm):
+    name = StringField('Department Name', validators=[DataRequired()], render_kw={"class":"form-control"})
+    submit = SubmitField('Save Changes', render_kw={"class":"btn btn-primary btn-block"})
+
+
+class OccupationForm(FlaskForm):
+    name = StringField('Occupation Name', validators=[DataRequired()], render_kw={"class":"form-control"})
+    department_id = SelectField('Department', validators=[DataRequired()], render_kw={"class":"form-control"})
+    submit = SubmitField('Save Changes', render_kw={"class":"btn btn-primary btn-block"})
+
+    def __init__(self):
+        super(OccupationForm, self).__init__()
+
+        # Fetch departments from the database
+        departments = Department.query.all()
+
+        # Create choices for the Department SelectField
+        self.department_id.choices = [('none_selected', 'Select Department')] + [(str(dept.id), dept.name) for dept in departments]

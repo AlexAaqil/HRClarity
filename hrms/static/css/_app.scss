@@ -1,4 +1,4 @@
-$aside_width: 12%;
+$aside_width: 14%;
 $theme_color: blue;
 
 .app {
@@ -32,6 +32,7 @@ $theme_color: blue;
           }
           a {
             width: 100%;
+            display: block;
             text-decoration: none;
             color: #ffffff;
           }

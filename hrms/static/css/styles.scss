@@ -4,6 +4,17 @@
   margin: 0;
 }
 
-@import 'homepage';
-@import 'authentication';
-@import 'app';
+form {
+  h1 {
+    border-bottom: 1px solid rgb(214, 214, 214);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em 0;
+    margin: 0 0 0.5em;
+  }
+}
+
+@import "homepage";
+@import "authentication";
+@import "app";

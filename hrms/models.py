@@ -20,7 +20,7 @@ class Department(db.Model):
 
 class Occupation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), unique=True, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     department_id = db.Column(db.Integer, db.ForeignKey('department.id'), nullable=False)
 
     # Relationship
@@ -50,13 +50,11 @@ class Employee(db.Model, UserMixin):
     email_address = db.Column(db.String(120), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
     national_id = db.Column(db.Integer, nullable=False)
-    department_id = db.Column(db.Integer, db.ForeignKey('department.id'), nullable=False)
     occupation_id = db.Column(db.Integer, db.ForeignKey('occupation.id'), nullable=False)
-    user_level = db.Column(db.Integer, nullable=False)
+    user_level = db.Column(db.Integer, nullable=False, default=1)
 
     # Relationships
-    employee_department = db.relationship('Department', backref='employees_department')
-    employee_occupation = db.relationship('Occupation', backref='employees_occupation')
+    employee_occupation = db.relationship('Occupation', backref='employees_occupation', foreign_keys=[occupation_id])
 
     def __repr__(self):
         return f"Employee('{self.first_name}', '{self.last_name}', '{self.email_address}')"

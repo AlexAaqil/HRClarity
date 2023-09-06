@@ -4,42 +4,62 @@
   <main class="Employees">
     <div class="container pt-2">
       <div class="header p-2 d-flex justify-content-between align-items-center">
-        <h5>Employees ({{ employees.total }})</h5>
+        <h5>Employees ({{ employees_count }})</h5>
         <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Employees..." class="form-control-sm">
         <a href="{{ url_for('admin.add_employee') }}" class="btn btn-primary">New Employee</a>
       </div>
+
+      {% include 'notification_message.html' %}
 
       <div class="employees_wrapper">
         {% for employee in employees %}
         <div class="employee searchable p-3">
           <div class="actions border-bottom d-flex justify-content-between">
-            <span></span>
-            <div class="">
-              <span class="icon icon-pencil ml-2 text-primary"></span>
-              <span class="icon icon-trash ml-2 text-danger"></span>
+            <span class="text-secondary">
+                {% if employee.user_level == 1 %}
+                    Employee
+                {% elif employee.user_level == 2 %}
+                    Admin
+                {% endif %}
+            </span>
+            <div class="d-flex align-items-center">
+                <a href="{{ url_for('admin.update_employee', employee_id=employee.id) }}">
+                    <span class="icon icon-pencil"></span>
+                </a>
+                <form action="{{ url_for('admin.delete_employee', employee_id=employee.id) }}"
+                    method = "post"
+                    onsubmit="return confirm('Are you sure you want to delete this Employee?');">
+                    <button type="submit" class="btn">
+                        <span class="icon icon-trash text-danger"></span>
+                    </button>
+                </form>
             </div>
           </div>
 
-          <div class="details d-flex pt-2">
+          <div class="details d-flex align-items-center pt-2">
             <img
               src="{{ url_for('static', filename='images/dp.jpg') }}"
               alt="Employee"
             />
             <div class="basic_info ml-3">
               <p class="m-0">
-                {{ employee.first_name }} {{ employee.last_name }}
+                <b>{{ employee.first_name }} {{ employee.last_name }}</b>
               </p>
-              <p class="m-0">{{ employee.occupation }}</p>
+              <p class="m-0 text-secondary">{{ employee.occupation.name }}
+                    <span class="badge badge-info">
+                        {{ employee.employee_occupation.department.name }}
+                    </span>
+                </p>
             </div>
           </div>
 
-          <div class="more_info">
+          <div class="more_info mt-2">
             <p class="badge badge-primary">{{ employee.department }}</p>
             <p class="m-0">
-              <span class="icon icon-envelope"></span> email@gmail.com
+              <span class="icon icon-envelope"></span> {{ employee.email_address }}
             </p>
             <p class="m-0">
-              <span class="icon icon-phone"></span> +254 746 055 485
+              <span class="icon icon-phone"></span> {{ employee.phone_number }} {{ employee.national_id }}
             </p>
           </div>
         </div>
