@@ -1,17 +1,62 @@
 <aside>
-    <h1>HRClarity</h1>
-    <div class="links">
-        <ul>
-            <li><a href="{{ url_for('admin.admin_dashboard') }}"><span class="icon icon-home"></span><span>Dashboard</span></a></li>
-            <li><a href="{{ url_for('admin.employees') }}"><span class="icon icon-users"></span><span>Employees</span></a></li>
-            <li><a href="{{ url_for('admin.departments') }}"><span class="icon icon-work"></span>Departments</a></li>
-            <li><a href="{{ url_for('admin.occupations') }}"><span class="icon icon-briefcase"></span>Occupations</a></li>
-            <li><a href=""><span class="icon icon-car"></span>Leaves</a></li>
-            <li><a href=""><span class="icon icon-speaker"></span>Announcements</a></li>
-        </ul>
-        <ul>
-            <li><span class="icon icon-user"></span><span>{{ user.first_name }}</span></li>
-            <li><a href="{{ url_for('admin.logout') }}"><span class="icon icon-power-off"></span><span>Logout</span></a></li>
-        </ul>
-    </div>
+  <h1>HRClarity</h1>
+  <div class="links">
+    <ul>
+      <li>
+        <a href="{{ url_for('admin.admin_dashboard') }}">
+            <span class="icon icon-home"></span>
+            <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('admin.employees') }}">
+            <span class="icon icon-users"></span>
+            <span>Employees</span>
+        </a>
+      </li>
+      <li>
+        <a href="">
+            <span class="icon icon-car"></span>
+            <span>Leaves</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('admin.announcements') }}">
+            <span class="icon icon-speaker"></span>
+            <span>Announcements</span>
+        </a>
+      </li>
+
+      <div class="m-2 border-top"></div>
+
+      <li>
+        <a href="{{ url_for('admin.departments') }}">
+            <span class="icon icon-work"></span>
+            <span>Departments</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('admin.occupations') }}">
+            <span class="icon icon-briefcase"></span>
+            <span>Occupations</span>
+        </a>
+      </li>
+    </ul>
+
+
+    <ul>
+      <li>
+        <a href="">
+            <span class="icon icon-user"></span>
+            <span>{{ user.first_name }} {{ user.last_name }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('admin.logout') }}">
+            <span class="icon icon-power-off"></span>
+            <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </aside>

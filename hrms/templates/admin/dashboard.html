@@ -5,41 +5,37 @@
 
   <main class="Dashboard">
     <div class="container dashboard_wrapper p-4">
-      <div class="hero p-3">
+      <div class="hero container ">
         <div class="text">
-          <h1>Hi {{ user.first_name }}!</h1>
-          <p>Here are some statistics for you</p>
+          <h3>Hello {{ user.first_name }}!</h3>
+          <p class="text-secondary">Welcome to your dashboard</p>
         </div>
-        <img
-          src="{{ url_for('static', filename='images/dashboard.png') }}"
-          alt="Dashboard"
-        />
       </div>
 
-      <div class="container stats row pt-4 mt-5">
-        <div class="stat col text-center">
-          <h1>{{ departments_count }}</h1>
-          <p>Departments</p>
+      <div class="container stats">
+        <div class="stat">
+          <h3>{{ departments_count }}</h3>
+          <a href="{{ url_for('admin.departments') }}" class="text-dark">Departments</a>
         </div>
 
-        <div class="stat col text-center">
-          <h1>{{ occupations_count }}</h1>
-          <p>Occupations</p>
+        <div class="stat">
+          <h3>{{ occupations_count }}</h3>
+          <a href="{{ url_for('admin.occupations') }}" class="text-dark">Occupations</a>
         </div>
 
-        <div class="stat col text-center">
-          <h1>{{ employees_count }}</h1>
-          <p>Employees</p>
+        <div class="stat">
+          <h3>{{ employees_count }}</h3>
+          <a href="{{ url_for('admin.employees') }}" class="text-dark">Employees</a>
         </div>
 
-        <div class="stat col text-center">
-          <h1>20</h1>
-          <p>Leave Requests</p>
+        <div class="stat">
+          <h3>20</h3>
+          <a href="#" class="text-dark">Leaves</a>
         </div>
 
-        <div class="stat col text-center">
-          <h1>2</h1>
-          <p>Announcements</p>
+        <div class="stat">
+          <h3>{{ announcements_count }}</h3>
+          <a href="{{ url_for('admin.announcements') }}" class="text-dark">Announcements</a>
         </div>
       </div>
     </div>

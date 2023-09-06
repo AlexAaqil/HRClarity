@@ -145,19 +145,19 @@ footer p {
   }
 }
 .app {
-  background: blue;
+  background: #0241b8;
   height: 100vh;
   display: flex;
   align-items: center;
 }
 .app aside {
-  width: 14%;
+  width: 13%;
   height: 100%;
-  padding: 0.5em 0.8em;
+  padding: 0.5em 0 0.2em 0.2em;
   color: #fff;
 }
 .app aside h1 {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
   text-align: center;
 }
@@ -165,19 +165,18 @@ footer p {
   list-style: none;
 }
 .app aside .links ul li {
-  margin: 0.3em 0;
-  font-size: 0.95em;
+  margin: 0.1em 0;
   padding: 6px;
 }
 .app aside .links ul li:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(2, 2, 70);
   border-radius: 12px;
 }
 .app aside .links ul li a {
-  width: 100%;
-  display: block;
   text-decoration: none;
   color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 .app aside .links ul:nth-of-type(1) {
   margin: 2em 0;
@@ -189,8 +188,12 @@ footer p {
 .app aside .links .icon {
   margin: 0 0.3em 0 0;
 }
+.app aside .links a span:nth-of-type(2),
+.app aside .links .icon {
+  font-size: 0.95em;
+}
 .app main {
-  width: 86%;
+  width: 87%;
   border-radius: 16px;
   height: 99vh;
   overflow-y: auto;
@@ -201,24 +204,55 @@ footer p {
   padding-bottom: 12px;
 }
 
+@media screen and (width <= 576px) {
+  .app aside h1 {
+    display: none;
+  }
+  .app aside a span:nth-of-type(2) {
+    display: none;
+  }
+}
+.Dashboard {
+  background: beige;
+}
 .Dashboard .dashboard_wrapper {
   height: 100%;
 }
-.Dashboard .dashboard_wrapper .hero {
-  height: 40%;
-  display: grid;
-  place-items: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
+.Dashboard .dashboard_wrapper .hero .text h3 {
+  color: #0241b8;
 }
-.Dashboard .dashboard_wrapper .hero img {
-  width: 220px;
+.Dashboard .dashboard_wrapper .stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5em;
+}
+.Dashboard .dashboard_wrapper .stats .stat {
+  background: rgb(231, 231, 231);
+  padding: 0.5em 1em;
+  border-radius: 12px;
 }
 
+@media screen and (width <= 576px) {
+  .Dashboard .dashboard_wrapper .stats {
+    grid-template-columns: 1fr;
+  }
+}
+.Employees .container {
+  height: 100%;
+  overflow: auto;
+}
 .Employees .header {
   background: #fff;
   position: sticky;
   top: 0;
+  border-bottom: 1px solid rgb(224, 222, 222);
+}
+.Employees .header input {
+  border-radius: 16px;
+  border: 1px solid grey;
+  padding: 0.4em 1em;
+  width: 40%;
+  margin: auto;
 }
 .Employees .employees_wrapper {
   display: grid;
@@ -232,4 +266,13 @@ footer p {
 .Employees .employees_wrapper .employee img {
   width: 60px;
   border-radius: 50%;
+}
+
+@media screen and (width <= 576px) {
+  .Employees .header input {
+    display: none;
+  }
+  .Employees .employees_wrapper {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=styles.css.map */

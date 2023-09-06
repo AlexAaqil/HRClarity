@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, current_user, login_required
 from hrms import db, bcrypt
-from hrms.admin.forms import LoginForm, SignupForm, EmployeeForm, DepartmentForm, OccupationForm
-from hrms.models import Admin, Employee, Department, Occupation
+from hrms.hrm.forms import LoginForm, SignupForm, EmployeeForm, DepartmentForm, OccupationForm, AnnouncementForm
+from hrms.models import Admin, Employee, Department, Occupation, Announcement
 
 
 admin = Blueprint('admin', __name__)
@@ -47,7 +47,8 @@ def admin_dashboard():
     employees_count = Employee.query.count()
     departments_count = Department.query.count()
     occupations_count = Occupation.query.count()
-    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, user=current_user)
+    announcements_count = Announcement.query.count()
+    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements_count=announcements_count, user=current_user)
 
 
 @admin.route('/admin/employees')
@@ -222,3 +223,59 @@ def delete_occupation(occupation_id):
         return redirect(url_for('admin.occupations'))
 
     return render_template('occupations.html', page_title='Occupations')
+
+
+@admin.route('/admin/announcements')
+@login_required
+def announcements():
+    announcements = Announcement.query.order_by(Announcement.created_at).all()
+    announcements_count = Announcement.query.count()
+    return render_template('announcements.html', page_title='Announcements', announcements=announcements, announcements_count=announcements_count, user=current_user)
+
+
+@admin.route('/admin/announcements/add', methods=['GET', 'POST'])
+@login_required
+def add_announcement():
+    form = AnnouncementForm()
+    if form.validate_on_submit():
+        announcement = Announcement(title=form.title.data, content = form.content.data, ends_at=form.ends_at.data)
+        db.session.add(announcement)
+        db.session.commit()
+        flash('Announcement was added successfully!', 'success')
+        return redirect(url_for('admin.announcements'))
+
+    return render_template('add_announcement.html', page_title='Add Announcement', form=form, user=current_user)
+
+
+@admin.route('/admin/announcements/<int:announcement_id>/update', methods=['GET', 'POST'])
+@login_required
+def update_announcement(announcement_id):
+    announcement = Announcement.query.get_or_404(announcement_id)
+    form = AnnouncementForm()
+    if form.validate_on_submit():
+        announcement.title = form.title.data
+        announcement.content = form.content.data
+        announcement.ends_at = form.ends_at.data
+        db.session.commit()
+        flash('Announcement has been updated!', 'success')
+        return redirect(url_for('admin.announcements', announcement_id=announcement.id))
+    elif request.method == 'GET':
+        form.title.data = announcement.title
+        form.content.data = announcement.content
+        form.ends_at.data = announcement.ends_at
+
+    return render_template('add_announcement.html', page_title='Update Announcement', form=form, user=current_user)
+
+
+@admin.route('/admin/announcements/<int:announcement_id>/delete', methods=['POST'])
+@login_required
+def delete_announcement(announcement_id):
+    announcement = Announcement.query.get_or_404(announcement_id)
+
+    if request.method == 'POST':
+        db.session.delete(announcement)
+        db.session.commit()
+        flash('Announcement has been deleted!', 'success')
+        return redirect(url_for('admin.announcements'))
+
+    return render_template('announcements.html', page_title='Announcements')

@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_login import UserMixin
 from hrms import db, login_manager
 
@@ -58,3 +59,14 @@ class Employee(db.Model, UserMixin):
 
     def __repr__(self):
         return f"Employee('{self.first_name}', '{self.last_name}', '{self.email_address}')"
+
+
+class Announcement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(80), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    ends_at = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return f"Announcement('{self.title}', '{self.created_at}')"

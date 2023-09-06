@@ -1,16 +1,36 @@
 .Dashboard {
+  background: beige;
+
   .dashboard_wrapper {
     height: 100%;
 
     .hero {
-      height: 40%;
-      display: grid;
-      place-items: center;
-      align-items: center;
-      grid-template-columns: 1fr 1fr;
+      .text {
+        h3 {
+          color: $theme_color;
+        }
+      }
+    }
 
-      img {
-        width: 220px;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5em;
+
+      .stat {
+        background: rgb(231, 231, 231);
+        padding: 0.5em 1em;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (width <= 576px) {
+  .Dashboard {
+    .dashboard_wrapper {
+      .stats {
+        grid-template-columns: 1fr;
       }
     }
   }

@@ -21,7 +21,7 @@ def create_app(config_class=Config):
 
     from hrms.main.routes import main
     from hrms.employee.routes import employee
-    from hrms.admin.routes import admin
+    from hrms.hrm.routes import admin
     app.register_blueprint(main)
     app.register_blueprint(employee)
     app.register_blueprint(admin)
