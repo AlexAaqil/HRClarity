@@ -6,7 +6,7 @@
       <div class="header p-2 d-flex justify-content-between align-items-center">
         <h5>Announcements ({{ announcements_count }})</h5>
         <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Announcements..." class="form-control-sm">
-        <a href="{{ url_for('admin.add_announcement') }}" class="btn btn-primary">New Announcement</a>
+        <a href="{{ url_for('announcements.add_announcement') }}" class="btn btn-primary">New Announcement</a>
       </div>
       {% include 'notification_message.html' %}
 
@@ -15,13 +15,13 @@
             <div class="announcement list-group list-group-flush searchable">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span>
-                        <a href="{{ url_for('admin.update_announcement', announcement_id=announcement.id) }}">
+                        <a href="{{ url_for('announcements.update_announcement', announcement_id=announcement.id) }}">
                             {{ announcement.title }} - {{ announcement.content }}
                             <i class="text-secondary">{{ announcement.ends_at }}</i>
                         </a>
                     </span>
 
-                    <form action="{{ url_for('admin.delete_announcement', announcement_id=announcement.id) }}"
+                    <form action="{{ url_for('announcements.delete_announcement', announcement_id=announcement.id) }}"
                     method = "post"
                     onsubmit="return confirm('Are you sure you want to delete this announcement?');">
                     <button type="submit" class="btn text-danger">
