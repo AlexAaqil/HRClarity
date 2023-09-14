@@ -10,13 +10,13 @@
       </li>
 
       <li>
-        <a href="">
+        <a href="{{ url_for('leaves.employee_view_leaves') }}">
             <span class="icon icon-car"></span>
             <span>Leaves</span>
         </a>
       </li>
       <li>
-        <a href="{{ url_for('admin.announcements') }}">
+        <a href="#">
             <span class="icon icon-speaker"></span>
             <span>Announcements</span>
         </a>
@@ -26,7 +26,7 @@
       <li>
         <a href="">
             <span class="icon icon-user"></span>
-            <span>{{ user.first_name }} {{ user.last_name }}</span>
+            <span>{{ current_user.first_name }} {{ current_user.last_name }}</span>
         </a>
       </li>
       <li>

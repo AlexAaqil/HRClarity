@@ -4,11 +4,10 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from hrms.config import Config
 
-
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-login_manager.login_view = 'main.login'
+login_manager.login_view = 'employee.employee_login'
 
 
 from hrms.employee.routes import employee_login_manager as employee_login_manager
@@ -30,10 +29,12 @@ def create_app(config_class=Config):
     from hrms.employee.routes import employee
     from hrms.hrm.routes import admin
     from hrms.announcements.routes import announcements
+    from hrms.leaves.routes import leaves
     app.register_blueprint(main)
     app.register_blueprint(employee)
     app.register_blueprint(admin)
     app.register_blueprint(announcements)
+    app.register_blueprint(leaves)
 
     from hrms.models import Admin
     create_database(app)

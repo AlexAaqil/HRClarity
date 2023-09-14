@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from hrms import db, bcrypt
 from hrms.hrm.forms import LoginForm, SignupForm, EmployeeForm, DepartmentForm, OccupationForm
-from hrms.models import Admin, Employee, Department, Occupation, Announcement
+from hrms.models import Admin, Employee, Department, Occupation, Announcement, Leave
 
 
 admin = Blueprint('admin', __name__)
@@ -37,7 +37,7 @@ def signup():
         db.session.add(admin)
         db.session.commit()
         flash('Your account has been created! You can now login', 'success')
-        return redirect(url_for('admin.login'))
+        return redirect(url_for('admin.admin_login'))
     return render_template('admin/signup.html', page_title='Admin Signup', form=form)
 
 
@@ -54,7 +54,8 @@ def admin_dashboard():
     departments_count = Department.query.count()
     occupations_count = Occupation.query.count()
     announcements_count = Announcement.query.count()
-    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements_count=announcements_count, user=current_user)
+    leaves_count = Leave.query.filter_by(status = 'pending').count()
+    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements_count=announcements_count, leaves_count=leaves_count, user=current_user)
 
 
 @admin.route('/admin/employees')

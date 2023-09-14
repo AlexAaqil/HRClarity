@@ -14,6 +14,21 @@
 
       <div class="container stats">
         <div class="stat">
+          <h3>{{ leaves_count }}</h3>
+          <a href="{{ url_for('leaves.admin_view_leaves') }}" class="text-dark">Leave Requests</a>
+        </div>
+
+        <div class="stat">
+          <h3>{{ announcements_count }}</h3>
+          <a href="{{ url_for('announcements.view_announcements') }}" class="text-dark">Announcements</a>
+        </div>
+
+        <div class="stat">
+          <h3>{{ employees_count }}</h3>
+          <a href="{{ url_for('admin.employees') }}" class="text-dark">Employees</a>
+        </div>
+
+        <div class="stat">
           <h3>{{ departments_count }}</h3>
           <a href="{{ url_for('admin.departments') }}" class="text-dark">Departments</a>
         </div>
@@ -23,20 +38,6 @@
           <a href="{{ url_for('admin.occupations') }}" class="text-dark">Occupations</a>
         </div>
 
-        <div class="stat">
-          <h3>{{ employees_count }}</h3>
-          <a href="{{ url_for('admin.employees') }}" class="text-dark">Employees</a>
-        </div>
-
-        <div class="stat">
-          <h3>20</h3>
-          <a href="#" class="text-dark">Leaves</a>
-        </div>
-
-        <div class="stat">
-          <h3>{{ announcements_count }}</h3>
-          <a href="{{ url_for('admin.announcements') }}" class="text-dark">Announcements</a>
-        </div>
       </div>
     </div>
   </main>

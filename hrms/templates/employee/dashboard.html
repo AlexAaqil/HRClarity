@@ -7,20 +7,20 @@
     <div class="container dashboard_wrapper p-4">
       <div class="hero container ">
         <div class="text">
-          <h3>Hello {{ user.first_name }}!</h3>
+          <h3>Hello {{ current_user.first_name }}!</h3>
           <p class="text-secondary">Welcome to your dashboard</p>
         </div>
       </div>
 
       <div class="container stats">
         <div class="stat">
-          <h3>20</h3>
-          <a href="#" class="text-dark">Leaves</a>
+          <h3>{{ leaves_count }}</h3>
+          <a href="{{ url_for('leaves.employee_view_leaves') }}" class="text-dark">Leaves</a>
         </div>
 
         <div class="stat">
           <h3>{{ announcements_count }}</h3>
-          <a href="{{ url_for('admin.announcements') }}" class="text-dark">Announcements</a>
+          <a href="#" class="text-dark">Announcements</a>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, url_for, redirect, flash
-from flask_login import LoginManager, login_user, logout_user, current_user
+from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from hrms import bcrypt
 from hrms.employee.forms import LoginForm
-from hrms.models import Employee, Announcement
+from hrms.models import Employee, Announcement, Leave
 
 
 employee = Blueprint('employee', __name__)
@@ -34,6 +34,8 @@ def logout():
 
 
 @employee.route('/employee/dashboard')
+@login_required
 def employee_dashboard():
     announcements_count = Announcement.query.count()
-    return render_template('employee/dashboard.html', page_title='Employee Dashboard', announcements_count=announcements_count, user=current_user)
+    leaves_count = len(Leave.query.filter_by(employee_id=current_user.id).all())
+    return render_template('employee/dashboard.html', page_title='Employee Dashboard', announcements_count=announcements_count, leaves_count=leaves_count, user=current_user)

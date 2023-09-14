@@ -61,12 +61,28 @@ class Employee(db.Model, UserMixin):
     national_id = db.Column(db.Integer, nullable=False)
     occupation_id = db.Column(db.Integer, db.ForeignKey('occupation.id'), nullable=False)
     user_level = db.Column(db.Integer, nullable=False, default=1)
+    leaves = db.relationship('Leave')
 
     # Relationships
-    employee_occupation = db.relationship('Occupation', backref='employees_occupation', foreign_keys=[occupation_id])
+    employee_occupation = db.relationship('Occupation', backref='employees_occupation', overlaps="employees,occupation", foreign_keys=[occupation_id])
 
     def __repr__(self):
         return f"Employee('{self.first_name}', '{self.last_name}', '{self.email_address}')"
+
+
+class Leave(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    leave_type = db.Column(db.String(40), nullable=False)
+    from_date = db.Column(db.Date)
+    to_date = db.Column(db.Date)
+    status = db.Column(db.String(12), default='pending')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relationship
+    employee_id = db.Column(db.Integer, db.ForeignKey('employee.id'))
+
+    def __repr__(self):
+        return f"Leave('{self.leave_type}', '{self.created_at}')"
 
 
 class Announcement(db.Model):
