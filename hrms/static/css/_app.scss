@@ -58,7 +58,6 @@ $theme_color: #0241b8;
       .icon {
         font-size: 0.95em;
       }
-
     }
   }
 
@@ -69,24 +68,49 @@ $theme_color: #0241b8;
     overflow-y: auto;
     z-index: 5;
 
-    .container {
+    .main_container {
       background: #fff;
       padding-bottom: 12px;
+      height: 100%;
+      overflow: auto;
+
+      .header {
+        background: #fff;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid rgb(224, 222, 222);
+
+        input {
+          border-radius: 16px;
+          border: 1px solid grey;
+          padding: 0.4em 1em;
+          width: 40%;
+          margin: auto;
+        }
+      }
     }
   }
 }
 
 @media screen and (width <= 576px) {
-    .app {
-        aside {
-            h1 {
-                display: none;
-            }
-            a span:nth-of-type(2) {
-                display: none;
-            }
-        }
+  .app {
+    aside {
+      h1 {
+        display: none;
+      }
+      a span:nth-of-type(2) {
+        display: none;
+      }
     }
+
+    main {
+      .header {
+        input {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 @import "dashboard";

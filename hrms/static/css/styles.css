@@ -199,9 +199,24 @@ footer p {
   overflow-y: auto;
   z-index: 5;
 }
-.app main .container {
+.app main .main_container {
   background: #fff;
   padding-bottom: 12px;
+  height: 100%;
+  overflow: auto;
+}
+.app main .main_container .header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgb(224, 222, 222);
+}
+.app main .main_container .header input {
+  border-radius: 16px;
+  border: 1px solid grey;
+  padding: 0.4em 1em;
+  width: 40%;
+  margin: auto;
 }
 
 @media screen and (width <= 576px) {
@@ -209,6 +224,9 @@ footer p {
     display: none;
   }
   .app aside a span:nth-of-type(2) {
+    display: none;
+  }
+  .app main .header input {
     display: none;
   }
 }
@@ -237,23 +255,6 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
-.Employees .container {
-  height: 100%;
-  overflow: auto;
-}
-.Employees .header {
-  background: #fff;
-  position: sticky;
-  top: 0;
-  border-bottom: 1px solid rgb(224, 222, 222);
-}
-.Employees .header input {
-  border-radius: 16px;
-  border: 1px solid grey;
-  padding: 0.4em 1em;
-  width: 40%;
-  margin: auto;
-}
 .Employees .employees_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -269,9 +270,6 @@ footer p {
 }
 
 @media screen and (width <= 576px) {
-  .Employees .header input {
-    display: none;
-  }
   .Employees .employees_wrapper {
     grid-template-columns: 1fr;
   }
