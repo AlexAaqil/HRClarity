@@ -12,7 +12,7 @@
       {% include 'notification_message.html' %}
 
       <div class="employees_wrapper">
-        {% for employee in employees %}
+        {% for employee, occupation in employees %}
         <div class="employee searchable p-3">
           <div class="actions border-bottom d-flex justify-content-between">
             <span class="text-secondary">
@@ -45,9 +45,9 @@
               <p class="m-0">
                 <b>{{ employee.first_name }} {{ employee.last_name }}</b>
               </p>
-              <p class="m-0 text-secondary">{{ employee.occupation.name }}
+              <p class="m-0 text-secondary">{{ occupation.name }}
                     <span class="badge badge-info">
-                        {{ employee.employee_occupation.department.name }}
+                        {{ occupation.department.name }}
                     </span>
                 </p>
             </div>
@@ -59,7 +59,7 @@
               <span class="icon icon-envelope"></span> {{ employee.email_address }}
             </p>
             <p class="m-0">
-              <span class="icon icon-phone"></span> {{ employee.phone_number }} {{ employee.national_id }}
+              <span class="icon icon-phone"></span> {{ employee.phone_number }}
             </p>
           </div>
         </div>

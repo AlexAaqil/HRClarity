@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from hrms import db, bcrypt
-from hrms.hrm.forms import LoginForm, SignupForm, EmployeeForm, DepartmentForm, OccupationForm
+from hrms.hrm.forms import LoginForm, SignupForm, EmployeeForm, UpdateEmployeeForm, DepartmentForm, OccupationForm
 from hrms.models import Admin, Employee, Department, Occupation, Announcement, Leave
 
 
@@ -61,8 +61,8 @@ def admin_dashboard():
 @admin.route('/admin/employees')
 @login_required
 def employees():
-    employees = Employee.query.all()
-    employees_count = Employee.query.count()
+    employees = db.session.query(Employee, Occupation).join(Occupation).all()
+    employees_count = len(employees)
     return render_template('admin/employees.html', page_title='Employees', employees=employees, employees_count=employees_count, user=current_user)
 
 
@@ -84,7 +84,7 @@ def add_employee():
 @login_required
 def update_employee(employee_id):
     employee = Employee.query.get_or_404(employee_id)
-    form = EmployeeForm()
+    form = UpdateEmployeeForm()
     if form.validate_on_submit():
         employee.first_name = form.first_name.data
         employee.last_name = form.last_name.data
