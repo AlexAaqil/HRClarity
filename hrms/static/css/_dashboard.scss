@@ -1,6 +1,4 @@
 .Dashboard {
-  background: beige;
-
   .dashboard_wrapper {
     height: 100%;
 
@@ -18,10 +16,56 @@
       gap: 0.5em;
 
       .stat {
-        background: rgb(231, 231, 231);
+        background: rgb(203, 238, 243);
         padding: 0.5em 1em;
         border-radius: 12px;
       }
+    }
+
+    .updates {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 0.5em;
+        margin-top: 1em;
+
+        .update {
+            border: 1px solid rgb(209, 208, 208);
+            padding: 0.5em 1em;
+            border-radius: 12px;
+
+            h1 {
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .leaves {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0.8em 0;
+
+                .info {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5em;
+
+                    img {
+                        width: 50px;
+                        border-radius: 50%;
+                    }
+
+                    .text {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+
+                .actions {
+                    display: flex;
+                    gap: 0.5em;
+                }
+            }
+        }
     }
   }
 }

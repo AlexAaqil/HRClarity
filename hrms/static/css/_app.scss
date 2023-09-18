@@ -63,12 +63,12 @@ $theme_color: #0241b8;
 
   main {
     width: calc(100% - $aside_width);
-    border-radius: 16px;
     height: 99vh;
     overflow-y: auto;
     z-index: 5;
 
     .main_container {
+      border-radius: 16px;
       background: #fff;
       padding-bottom: 12px;
       height: 100%;
@@ -116,3 +116,4 @@ $theme_color: #0241b8;
 
 @import "dashboard";
 @import "employees";
+@import "announcements";

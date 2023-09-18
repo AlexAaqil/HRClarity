@@ -1,0 +1,15 @@
+.employee_announcements_wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+
+    .announcement {
+        background: rgb(233, 233, 233);
+        border-radius: 12px;
+
+        h5 {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+    }
+}

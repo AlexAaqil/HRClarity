@@ -194,12 +194,12 @@ footer p {
 }
 .app main {
   width: 87%;
-  border-radius: 16px;
   height: 99vh;
   overflow-y: auto;
   z-index: 5;
 }
 .app main .main_container {
+  border-radius: 16px;
   background: #fff;
   padding-bottom: 12px;
   height: 100%;
@@ -231,9 +231,6 @@ footer p {
     display: none;
   }
 }
-.Dashboard {
-  background: beige;
-}
 .Dashboard .dashboard_wrapper {
   height: 100%;
 }
@@ -246,9 +243,47 @@ footer p {
   gap: 0.5em;
 }
 .Dashboard .dashboard_wrapper .stats .stat {
-  background: rgb(231, 231, 231);
+  background: rgb(203, 238, 243);
   padding: 0.5em 1em;
   border-radius: 12px;
+}
+.Dashboard .dashboard_wrapper .updates {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+.Dashboard .dashboard_wrapper .updates .update {
+  border: 1px solid rgb(209, 208, 208);
+  padding: 0.5em 1em;
+  border-radius: 12px;
+}
+.Dashboard .dashboard_wrapper .updates .update h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.Dashboard .dashboard_wrapper .updates .update .leaves {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.8em 0;
+}
+.Dashboard .dashboard_wrapper .updates .update .leaves .info {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.Dashboard .dashboard_wrapper .updates .update .leaves .info img {
+  width: 50px;
+  border-radius: 50%;
+}
+.Dashboard .dashboard_wrapper .updates .update .leaves .info .text {
+  display: flex;
+  flex-direction: column;
+}
+.Dashboard .dashboard_wrapper .updates .update .leaves .actions {
+  display: flex;
+  gap: 0.5em;
 }
 
 @media screen and (width <= 576px) {
@@ -274,4 +309,17 @@ footer p {
   .Employees .employees_wrapper {
     grid-template-columns: 1fr;
   }
+}
+.employee_announcements_wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+.employee_announcements_wrapper .announcement {
+  background: rgb(233, 233, 233);
+  border-radius: 12px;
+}
+.employee_announcements_wrapper .announcement h5 {
+  font-size: 1.1em;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */
