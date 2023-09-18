@@ -6,11 +6,10 @@ from hrms import db, login_manager
 @login_manager.user_loader
 def load_user(user_id):
     admin = Admin.query.filter_by(id=user_id, user_type='admin').first()
+    employee = Employee.query.filter_by(id=user_id, user_type='employee').first()
     if admin:
         return admin
-
-    employee = Employee.query.filter_by(id=user_id, user_type='employee').first()
-    if employee:
+    elif employee:
         return employee
 
     return None
@@ -91,7 +90,7 @@ class Announcement(db.Model):
     title = db.Column(db.String(80), nullable=False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    ends_at = db.Column(db.DateTime)
+    ends_at = db.Column(db.Date)
 
     def __repr__(self):
         return f"Announcement('{self.title}', '{self.created_at}')"
