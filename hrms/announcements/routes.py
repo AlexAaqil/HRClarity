@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import current_user, login_required
 from hrms import db
@@ -11,9 +12,18 @@ announcements = Blueprint('announcements', __name__)
 @announcements.route('/admin/announcements')
 @login_required
 def view_announcements():
-    announcements = Announcement.query.order_by(Announcement.created_at).all()
+    announcements = Announcement.query.order_by(Announcement.ends_at.asc()).all()
     announcements_count = Announcement.query.count()
     return render_template('announcements.html', page_title='Announcements', announcements=announcements, announcements_count=announcements_count, user=current_user)
+
+
+@announcements.route('/employee/announcements')
+@login_required
+def employee_view_announcements():
+    today = datetime.now().date()
+    announcements = Announcement.query.filter(Announcement.ends_at >= today).order_by(Announcement.ends_at.asc()).all()
+    announcements_count = len(announcements)
+    return render_template('employee/announcements.html', page_title='Announcements', announcements=announcements, announcements_count=announcements_count, user=current_user)
 
 
 @announcements.route('/admin/announcements/add', methods=['GET', 'POST'])

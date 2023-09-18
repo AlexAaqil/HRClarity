@@ -1,0 +1,38 @@
+{% extends 'main_layout.html' %} {% block body %}
+<section class="app">
+  {% include 'employee/aside.html' %}
+  <main>
+    <div class="main_container container-fluid pt-2">
+      <div class="header p-2 d-flex justify-content-between align-items-center">
+        <h6>Announcements ({{ announcements_count }})</h6>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="searchFunction()"
+          placeholder="Search Announcements..."
+          class="form-control-sm"
+        />
+      </div>
+      {% include 'notification_message.html' %}
+
+      <div class="employee_announcements_wrapper">
+        {% for announcement in announcements %}
+        <div class="announcement p-3">
+          <h5>
+            {{ announcement.title }}
+            <span
+              ><small
+                ><i>{{ announcement.ends_at.strftime('%d-%m-%Y') }}</i></small
+              ></span
+            >
+          </h5>
+          <p>{{ announcement.content }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+</section>
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock body %}
