@@ -25,15 +25,15 @@ class LoginForm(FlaskForm):
 
 
 class EmployeeForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired()], render_kw={"class":"form-control"})
-    last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"class":"form-control"})
-    dob = DateField('Date of Birth', validators=[DataRequired()], render_kw={"class":"form-control"})
-    gender = SelectField('Gender', choices=[('none_selected', 'Select Gender'), ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], validators=[DataRequired()], render_kw={"class":"form-control"})
-    email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"class":"form-control"})
-    phone_number = StringField('Phone Number', validators=[DataRequired()], render_kw={"class":"form-control"})
-    national_id = IntegerField('National ID', validators=[DataRequired()], render_kw={"class":"form-control"})
-    occupation = SelectField('Occupation', validators=[DataRequired()], render_kw={"class":"form-control"})
-    user_level = SelectField('User Level', choices=[(1, 'Employee'), (2, 'Admin')], validators=[DataRequired()], render_kw={"class":"form-control"})
+    first_name = StringField('First Name', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    dob = DateField('Date of Birth', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    gender = SelectField('Gender', choices=[('none_selected', 'Select Gender'), ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    email_address = StringField('Email Address', validators=[DataRequired(), Email()], render_kw={"class":"form-control form-control-sm"})
+    phone_number = StringField('Phone Number', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    national_id = IntegerField('National ID', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    occupation = SelectField('Occupation', validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
+    user_level = SelectField('User Level', choices=[(1, 'Employee'), (2, 'Admin')], validators=[DataRequired()], render_kw={"class":"form-control form-control-sm"})
     submit = SubmitField('Save Changes', render_kw={"class":"btn btn-primary btn-block"})
 
     def __init__(self):
