@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from hrms import db, bcrypt
@@ -53,15 +54,20 @@ def admin_dashboard():
     employees_count = Employee.query.count()
     departments_count = Department.query.count()
     occupations_count = Occupation.query.count()
+
+    today = datetime.now().date()
+    announcements = Announcement.query.filter(Announcement.ends_at >= today).order_by(Announcement.ends_at.asc()).all()
     announcements_count = Announcement.query.count()
+
+    latest_pending_leaves = db.session.query(Leave, Employee).join(Employee).filter(Leave.status == 'pending').order_by(Leave.created_at.desc()).limit(4).all()
     leaves_count = Leave.query.filter_by(status = 'pending').count()
-    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements_count=announcements_count, leaves_count=leaves_count, user=current_user)
+    return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements=announcements, announcements_count=announcements_count,latest_pending_leaves=latest_pending_leaves, leaves_count=leaves_count, user=current_user)
 
 
 @admin.route('/admin/employees')
 @login_required
 def employees():
-    employees = db.session.query(Employee, Occupation).join(Occupation).all()
+    employees = db.session.query(Employee, Occupation).join(Occupation).order_by(Employee.first_name.asc()).all()
     employees_count = len(employees)
     return render_template('admin/employees.html', page_title='Employees', employees=employees, employees_count=employees_count, user=current_user)
 

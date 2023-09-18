@@ -2,34 +2,48 @@
 <section class="app">
   {% include 'employee/aside.html' %}
   <main>
-    <div class="main_container container pt-2">
+    <div class="main_container container-fluid pt-2">
       <div class="header p-2 d-flex justify-content-between align-items-center">
         <h5>Leaves ({{ leaves_count }})</h5>
-        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Leaves..." class="form-control-sm">
-        <a href="{{ url_for('leaves.make_leave_request') }}" class="btn btn-primary">New Leave Request</a>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="searchFunction()"
+          placeholder="Search Leaves..."
+          class="form-control-sm"
+        />
+        <a
+          href="{{ url_for('leaves.make_leave_request') }}"
+          class="btn btn-primary"
+          >New Leave Request</a
+        >
       </div>
       {% include 'notification_message.html' %}
 
       <div class="leaves_wrapper">
         <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Leave Type</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for leave in leaves %}
-                <tr class="searchable">
-                    <td>{{ leave.leave_type }}</td>
-                    <td>{{ leave.from_date.strftime('%d-%m-%Y') }}</td>
-                    <td>{{ leave.to_date.strftime('%d-%m-%Y') }}</td>
-                    <td class="{% if leave.status == 'pending' %}text-primary{% elif leave.status == 'approved'%}text-success{%else%}text-danger{% endif %}">{{ leave.status }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+          <thead>
+            <tr>
+              <th>Leave Type</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for leave in leaves %}
+            <tr class="searchable">
+              <td>{{ leave.leave_type }}</td>
+              <td>{{ leave.from_date.strftime('%d-%m-%Y') }}</td>
+              <td>{{ leave.to_date.strftime('%d-%m-%Y') }}</td>
+              <td
+                class="{% if leave.status == 'pending' %}text-primary{% elif leave.status == 'approved'%}text-success{%else%}text-danger{% endif %}"
+              >
+                {{ leave.status }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
     </div>

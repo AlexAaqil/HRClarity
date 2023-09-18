@@ -2,10 +2,10 @@
 
 {% block body %}
 {% include 'navbar.html' %}
-{% include 'notification_message.html' %}
 <section class="Authentication">
     <div class="container login">
         <div class="body">
+            {% include 'notification_message.html' %}
             <form action="" method="post">
                 <h1>{{ page_title }}</h1>
 

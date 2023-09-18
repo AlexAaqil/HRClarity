@@ -2,65 +2,52 @@
 <section class="app">
   {% include 'employee/aside.html' %}
   <main>
-    <div class="main_container container login">
+    <div class="main_container container-fluid login">
       <div class="body">
         <form action="" method="post">
-            <h1>{{ page_title }}</h1>
+          <h1>{{ page_title }}</h1>
 
-            {{ form.hidden_tag() }}
+          {{ form.hidden_tag() }}
 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.leave_type.label }}
-                        {% if form.leave_type.errors %}
-                            {{ form.leave_type }}
-                                {% for error in form.leave_type.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            {% else %}
-                                {{ form.leave_type }}
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.from_date.label }}
-                        {% if form.from_date.errors %}
-                            {{ form.from_date }}
-                                {% for error in form.from_date.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            {% else %}
-                                {{ form.from_date }}
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.to_date.label }}
-                        {% if form.to_date.errors %}
-                            {{ form.to_date }}
-                                {% for error in form.to_date.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            {% else %}
-                                {{ form.to_date }}
-                        {% endif %}
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                {{ form.leave_type.label }} {% if form.leave_type.errors %} {{
+                form.leave_type }} {% for error in form.leave_type.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %} {% else %} {{ form.leave_type }} {% endif %}
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    {{ form.submit }}
-                </div>
-                <div class="col">
-                    <a href="{{ url_for('leaves.employee_view_leaves') }}" class="btn btn-danger btn-block">Cancel</a>
-                </div>
+            <div class="col">
+              <div class="form-group">
+                {{ form.from_date.label }} {% if form.from_date.errors %} {{
+                form.from_date }} {% for error in form.from_date.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %} {% else %} {{ form.from_date }} {% endif %}
+              </div>
             </div>
+
+            <div class="col">
+              <div class="form-group">
+                {{ form.to_date.label }} {% if form.to_date.errors %} {{
+                form.to_date }} {% for error in form.to_date.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %} {% else %} {{ form.to_date }} {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">{{ form.submit }}</div>
+            <div class="col">
+              <a
+                href="{{ url_for('leaves.employee_view_leaves') }}"
+                class="btn btn-danger btn-block"
+                >Cancel</a
+              >
+            </div>
+          </div>
         </form>
       </div>
     </div>

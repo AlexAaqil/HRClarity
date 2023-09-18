@@ -2,33 +2,50 @@
 <section class="app">
   {% include 'admin/aside.html' %}
   <main>
-    <div class="main_container container pt-2">
+    <div class="main_container container-fluid pt-2">
       <div class="header p-2 d-flex justify-content-between align-items-center">
         <h5>Occupations ({{ occupations_count }})</h5>
-        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Occupations..." class="form-control-sm">
-        <a href="{{ url_for('admin.add_occupation') }}" class="btn btn-primary">New Occupation</a>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="searchFunction()"
+          placeholder="Search Occupations..."
+          class="form-control-sm"
+        />
+        <a href="{{ url_for('admin.add_occupation') }}" class="btn btn-primary"
+          >New Occupation</a
+        >
       </div>
 
       {% include 'notification_message.html' %}
 
       <div class="occupations_wrapper">
         {% for occupation in occupations %}
-            <div class="occupation list-group list-group-flush searchable">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>
-                        <a href="{{ url_for('admin.update_occupation', occupation_id=occupation.id) }}">
-                            {{ occupation.name }} <span class="badge badge-info">{{ occupation.department.name }}</span>
-                        </a>
-                    </span>
-                    <form action="{{ url_for('admin.delete_occupation', occupation_id=occupation.id) }}"
-                    method = "post"
-                    onsubmit="return confirm('Are you sure you want to delete this Occupation?');">
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            <span class="icon icon-trash"></span>
-                        </button>
-                    </form>
-                </li>
-            </div>
+        <div class="occupation list-group list-group-flush searchable">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span>
+              <a
+                href="{{ url_for('admin.update_occupation', occupation_id=occupation.id) }}"
+              >
+                {{ occupation.name }}
+                <span class="badge badge-info"
+                  >{{ occupation.department.name }}</span
+                >
+              </a>
+            </span>
+            <form
+              action="{{ url_for('admin.delete_occupation', occupation_id=occupation.id) }}"
+              method="post"
+              onsubmit="return confirm('Are you sure you want to delete this Occupation?');"
+            >
+              <button type="submit" class="btn btn-sm btn-danger">
+                <span class="icon icon-trash"></span>
+              </button>
+            </form>
+          </li>
+        </div>
         {% endfor %}
       </div>
     </div>

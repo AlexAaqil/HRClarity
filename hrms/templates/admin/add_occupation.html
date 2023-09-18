@@ -2,51 +2,44 @@
 <section class="app">
   {% include 'admin/aside.html' %}
   <main>
-    <div class="main_container container login">
+    <div class="main_container container-fluid login">
       <div class="body">
         <form action="" method="post">
-            <h1>{{ page_title }}</h1>
+          <h1>{{ page_title }}</h1>
 
-            {{ form.hidden_tag() }}
+          {{ form.hidden_tag() }}
 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.name.label }}
-                        {% if form.name.errors %}
-                            {{ form.name }}
-                                {% for error in form.name.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            {% else %}
-                                {{ form.name }}
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group">
-                        {{ form.department_id.label }}
-                        {% if form.department_id.errors %}
-                            {{ form.department_id }}
-                                {% for error in form.department_id.errors %}
-                                    <span class="text-danger">{{ error }}</span>
-                                {% endfor %}
-                            {% else %}
-                                {{ form.department_id }}
-                        {% endif %}
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                {{ form.name.label }} {% if form.name.errors %} {{ form.name }}
+                {% for error in form.name.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %} {% else %} {{ form.name }} {% endif %}
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    {{ form.submit }}
-                </div>
-                <div class="col">
-                    <a href="{{ url_for('admin.occupations') }}" class="btn btn-danger btn-block">Cancel</a>
-                </div>
+            <div class="col">
+              <div class="form-group">
+                {{ form.department_id.label }} {% if form.department_id.errors
+                %} {{ form.department_id }} {% for error in
+                form.department_id.errors %}
+                <span class="text-danger">{{ error }}</span>
+                {% endfor %} {% else %} {{ form.department_id }} {% endif %}
+              </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col">{{ form.submit }}</div>
+            <div class="col">
+              <a
+                href="{{ url_for('admin.occupations') }}"
+                class="btn btn-danger btn-block"
+                >Cancel</a
+              >
+            </div>
+          </div>
         </form>
       </div>
     </div>

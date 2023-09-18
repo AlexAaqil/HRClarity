@@ -2,11 +2,19 @@
 <section class="app">
   {% include 'admin/aside.html' %}
   <main class="Employees">
-    <div class="main_container container pt-2">
+    <div class="main_container container-fluid pt-2">
       <div class="header p-2 d-flex justify-content-between align-items-center">
         <h5>Employees ({{ employees_count }})</h5>
-        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search Employees..." class="form-control-sm">
-        <a href="{{ url_for('admin.add_employee') }}" class="btn btn-primary">New Employee</a>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="searchFunction()"
+          placeholder="Search Employees..."
+          class="form-control-sm"
+        />
+        <a href="{{ url_for('admin.add_employee') }}" class="btn btn-primary"
+          >New Employee</a
+        >
       </div>
 
       {% include 'notification_message.html' %}
@@ -16,23 +24,24 @@
         <div class="employee searchable p-3">
           <div class="actions border-bottom d-flex justify-content-between">
             <span class="text-secondary">
-                {% if employee.user_level == 1 %}
-                    Employee
-                {% elif employee.user_level == 2 %}
-                    Admin
-                {% endif %}
+              {% if employee.user_level == 1 %} Employee {% elif
+              employee.user_level == 2 %} Admin {% endif %}
             </span>
             <div class="d-flex align-items-center">
-                <a href="{{ url_for('admin.update_employee', employee_id=employee.id) }}">
-                    <span class="icon icon-pencil"></span>
-                </a>
-                <form action="{{ url_for('admin.delete_employee', employee_id=employee.id) }}"
-                    method = "post"
-                    onsubmit="return confirm('Are you sure you want to delete this Employee?');">
-                    <button type="submit" class="btn">
-                        <span class="icon icon-trash text-danger"></span>
-                    </button>
-                </form>
+              <a
+                href="{{ url_for('admin.update_employee', employee_id=employee.id) }}"
+              >
+                <span class="icon icon-pencil"></span>
+              </a>
+              <form
+                action="{{ url_for('admin.delete_employee', employee_id=employee.id) }}"
+                method="post"
+                onsubmit="return confirm('Are you sure you want to delete this Employee?');"
+              >
+                <button type="submit" class="btn">
+                  <span class="icon icon-trash text-danger"></span>
+                </button>
+              </form>
             </div>
           </div>
 
@@ -45,18 +54,20 @@
               <p class="m-0">
                 <b>{{ employee.first_name }} {{ employee.last_name }}</b>
               </p>
-              <p class="m-0 text-secondary">{{ occupation.name }}
-                    <span class="badge badge-info">
-                        {{ occupation.department.name }}
-                    </span>
-                </p>
+              <p class="m-0 text-secondary">
+                {{ occupation.name }}
+                <span class="badge badge-info">
+                  {{ occupation.department.name }}
+                </span>
+              </p>
             </div>
           </div>
 
           <div class="more_info mt-2">
             <p class="badge badge-primary">{{ employee.department }}</p>
             <p class="m-0">
-              <span class="icon icon-envelope"></span> {{ employee.email_address }}
+              <span class="icon icon-envelope"></span> {{ employee.email_address
+              }}
             </p>
             <p class="m-0">
               <span class="icon icon-phone"></span> {{ employee.phone_number }}
