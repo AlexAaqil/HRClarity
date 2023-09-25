@@ -12,7 +12,7 @@
           placeholder="Search Occupations..."
           class="form-control-sm"
         />
-        <a href="{{ url_for('admin.add_occupation') }}" class="btn btn-primary"
+        <a href="{{ url_for('organization.add_occupation') }}" class="btn btn-primary"
           >New Occupation</a
         >
       </div>
@@ -27,7 +27,7 @@
           >
             <span>
               <a
-                href="{{ url_for('admin.update_occupation', occupation_id=occupation.id) }}"
+                href="{{ url_for('organization.update_occupation', occupation_id=occupation.id) }}"
               >
                 {{ occupation.name }}
                 <span class="badge badge-info"
@@ -36,7 +36,7 @@
               </a>
             </span>
             <form
-              action="{{ url_for('admin.delete_occupation', occupation_id=occupation.id) }}"
+              action="{{ url_for('organization.delete_occupation', occupation_id=occupation.id) }}"
               method="post"
               onsubmit="return confirm('Are you sure you want to delete this Occupation?');"
             >

@@ -12,7 +12,7 @@
           placeholder="Search Departments..."
           class="form-control-sm"
         />
-        <a href="{{ url_for('admin.add_department') }}" class="btn btn-primary"
+        <a href="{{ url_for('organization.add_department') }}" class="btn btn-primary"
           >New Department</a
         >
       </div>
@@ -26,13 +26,13 @@
           >
             <span>
               <a
-                href="{{ url_for('admin.update_department', department_id=department.id) }}"
+                href="{{ url_for('organization.update_department', department_id=department.id) }}"
               >
                 {{ department.name }}
               </a>
             </span>
             <form
-              action="{{ url_for('admin.delete_department', department_id=department.id) }}"
+              action="{{ url_for('organization.delete_department', department_id=department.id) }}"
               method="post"
               onsubmit="return confirm('Are you sure you want to delete this Department?');"
             >

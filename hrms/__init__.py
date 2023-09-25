@@ -26,11 +26,13 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
 
     from hrms.main.routes import main
+    from hrms.organization.routes import organization
     from hrms.employee.routes import employee
     from hrms.hrm.routes import admin
     from hrms.announcements.routes import announcements
     from hrms.leaves.routes import leaves
     app.register_blueprint(main)
+    app.register_blueprint(organization)
     app.register_blueprint(employee)
     app.register_blueprint(admin)
     app.register_blueprint(announcements)
