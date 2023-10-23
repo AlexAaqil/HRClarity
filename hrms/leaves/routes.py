@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import current_user, login_required
 from hrms import db
 from hrms.leaves.forms import MakeLeaveRequest
-from hrms.models import Leave, Employee
+from hrms.models import Leave, User
 
 
 leaves = Blueprint('leaves', __name__)
@@ -21,7 +21,7 @@ def employee_view_leaves():
 @leaves.route('/admin/leaves')
 @login_required
 def admin_view_leaves():
-    leaves = db.session.query(Leave, Employee).join(Employee).all()
+    leaves = db.session.query(Leave, User).join(User).all()
     leaves_count = len(leaves)
     pending_leaves = len([leave for leave, _ in leaves if leave.status == 'pending'])
     return render_template('admin/leaves.html', page_title='Leave Requests', leaves=leaves, leaves_count=leaves_count, pending_leaves=pending_leaves, user=current_user)

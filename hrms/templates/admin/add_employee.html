@@ -27,9 +27,7 @@
                 {% endfor %} {% else %} {{ form.last_name }} {% endif %}
               </div>
             </div>
-          </div>
 
-          <div class="row">
             <div class="col">
               <div class="form-group">
                 {{ form.gender.label }} {% if form.gender.errors %} {{
@@ -38,7 +36,9 @@
                 {% endfor %} {% else %} {{ form.gender }} {% endif %}
               </div>
             </div>
+          </div>
 
+          <div class="row">
             <div class="col">
               <div class="form-group">
                 {{ form.dob.label }} {% if form.dob.errors %} {{ form.dob }} {%
@@ -47,9 +47,7 @@
                 {% endfor %} {% else %} {{ form.dob }} {% endif %}
               </div>
             </div>
-          </div>
 
-          <div class="row">
             <div class="col">
               <div class="form-group">
                 {{ form.email_address.label }} {% if form.email_address.errors
@@ -69,7 +67,9 @@
                 {% endfor %} {% else %} {{ form.phone_number }} {% endif %}
               </div>
             </div>
+          </div>
 
+          <div class="row">
             <div class="col">
               <div class="form-group">
                 {{ form.national_id.label }} {% if form.national_id.errors %} {{
@@ -78,24 +78,13 @@
                 {% endfor %} {% else %} {{ form.national_id }} {% endif %}
               </div>
             </div>
-          </div>
-
-          <div class="row">
+            
             <div class="col">
               <div class="form-group">
                 {{ form.occupation.label }} {% if form.occupation.errors %} {{
                 form.occupation }} {% for error in form.occupation.errors %}
                 <span class="text-danger">{{ error }}</span>
                 {% endfor %} {% else %} {{ form.occupation }} {% endif %}
-              </div>
-            </div>
-
-            <div class="col">
-              <div class="form-group">
-                {{ form.user_level.label }} {% if form.user_level.errors %} {{
-                form.user_level }} {% for error in form.user_level.errors %}
-                <span class="text-danger">{{ error }}</span>
-                {% endfor %} {% else %} {{ form.user_level }} {% endif %}
               </div>
             </div>
           </div>

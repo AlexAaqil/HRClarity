@@ -5,14 +5,8 @@ from hrms import db, login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
-    admin = Admin.query.filter_by(id=user_id, user_type='admin').first()
-    employee = Employee.query.filter_by(id=user_id, user_type='employee').first()
-    if admin:
-        return admin
-    elif employee:
-        return employee
-
-    return None
+    user = User.query.filter_by(id=user_id).first()
+    return user
 
 
 class Department(db.Model):
@@ -32,25 +26,13 @@ class Occupation(db.Model):
 
     # Relationship
     department_id = db.Column(db.Integer, db.ForeignKey('department.id'), nullable=False)
-    employees = db.relationship('Employee', backref='occupation', lazy=True)
+    employees = db.relationship('User', backref='occupation', lazy=True)
 
     def __repr__(self):
         return f"Occupation('{self.name}')"
 
 
-class Admin(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(80), nullable=False)
-    last_name = db.Column(db.String(120), nullable=False)
-    email_address = db.Column(db.String(120), nullable=False)
-    password = db.Column(db.String(60), nullable=False)
-    user_type = db.Column(db.String(10), nullable=False, default='admin')
-
-    def __repr__(self):
-        return f"Admin('{self.first_name}', '{self.last_name}', '{self.email_address}')"
-
-
-class Employee(db.Model, UserMixin):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(120), nullable=False)
@@ -61,6 +43,7 @@ class Employee(db.Model, UserMixin):
     national_id = db.Column(db.Integer, nullable=False)
     user_level = db.Column(db.Integer, nullable=False, default=1)
     user_type = db.Column(db.String(10), nullable=False, default='employee')
+    password = db.Column(db.String(60), nullable=False)
 
     # Relationships
     leaves = db.relationship('Leave')
@@ -79,7 +62,7 @@ class Leave(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     # Relationship
-    employee_id = db.Column(db.Integer, db.ForeignKey('employee.id'), nullable=False)
+    employee_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return f"Leave('{self.leave_type}', '{self.created_at}')"
