@@ -1,7 +1,7 @@
 # HRClarity
 <img src="./hrms/static/images/app_background.jpg" />
 <p>HRClarity is a Human Resource Management System.</p>
-<p>To view the deployed project, visit <a href="">hrclarity.com</a></p>
+<p>To view the deployed project, visit <a href="https://hrclarity.onrender.com/">hrclarity.onrender.com</a></p>
 <p>To view the Linkedin article, visit <a href="">Linkedin article</a></p>
 <p>You can also connect with the author on Linkedin: <a href="https://www.linkedin.com/in/alexwambui/" target="_blank">AlexWambui</a></p>
 <p>It enables Human Resource Managers perform tasks such as:</p>
