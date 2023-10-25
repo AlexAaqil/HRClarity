@@ -11,3 +11,8 @@ class LoginForm(FlaskForm):
                              "placeholder": "Password", "class": "form-control"})
     submit = SubmitField('Login', render_kw={
                          "class": "btn btn-primary btn-block"})
+
+
+class UpdatePasswordForm(FlaskForm):
+    new_password = PasswordField('New Password', validators=[DataRequired()], render_kw={"placehoder":"New Password", "class":"form-control"})
+    submit = SubmitField('Update', render_kw={"class":"btn btn-primary btn-block"})
