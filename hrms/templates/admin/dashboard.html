@@ -53,7 +53,7 @@
       <div class="container updates">
         <div class="update">
             <a href="{{ url_for('leaves.admin_view_leaves') }}" class="text-dark">
-                <h1 class="border-bottom">Leaves</h1>
+                <h2 class="border-bottom">Latest Leave Requests</h2>
             </a>
             {% for leave, employee in latest_pending_leaves %}
             <div class="leaves border-bottom">
@@ -93,7 +93,7 @@
 
         <div class="update">
             <a href="{{ url_for('announcements.view_announcements') }}" class="text-dark">
-                <h1 class="border-bottom">Announcements</h1>
+                <h2 class="border-bottom">Today's Announcements</h2>
             </a>
             {% for announcement in announcements %}
             <div class="announcements">

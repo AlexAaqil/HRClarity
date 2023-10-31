@@ -1,14 +1,55 @@
-{% extends "main_layout.html" %}
-{% block body %}
-{% include 'navbar.html' %}
+{% extends "main_layout.html" %} {% block body %} {% include 'navbar.html' %}
 <section class="Homepage">
   <div class="hero_section">
     <h1>HRClarity</h1>
     <p>Human Resource Management made easy</p>
   </div>
 
+  <section class="About" id="About">
+    <div class="container">
+      <p>
+        HRClarity is all about bringing clarity to your human resources
+        management. We understand that your most valuable assets are your
+        people, and we're here to help you nurture, manage, and empower them
+        like never before.
+      </p>
+      <p>HRClarity promises:</p>
+      <ul>
+        <li>
+          Simplicity: We believe that HR management should be simple. Our
+          user-friendly tools make it easy to navigate complex HR processes.
+        </li>
+        <li>
+          Insights: Unlock the potential of your data with powerful analytics.
+          Make informed decisions that drive your business forward.
+        </li>
+        <li>
+          Support: Our dedicated team is here for you. We're not just a service;
+          we're your HR partner.
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="Features" id="Features">
     <div class="features_wrapper container">
+      <div class="feature">
+        <div class="details">
+          <h1>Employees</h1>
+          <p>
+            Verifying, viewing and updating employees data has never been
+            easier. Experience the power of easily searching through all the
+            employees in the organization.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            src="{{ url_for('static', filename='images/employees.png') }}"
+            alt="Employees"
+          />
+        </div>
+      </div>
+
       <div class="feature">
         <div class="details">
           <h1>Leaves</h1>
@@ -40,81 +81,27 @@
           />
         </div>
       </div>
-
-      <div class="feature">
-        <div class="details">
-          <h1>Employees</h1>
-          <p>
-            Verifying, viewing and updating employees data has never been
-            easier. Experience the power of easily searching through all the
-            employees in the organization.
-          </p>
-        </div>
-        <div class="image">
-          <img
-            src="{{ url_for('static', filename='images/employees.png') }}"
-            alt="Employees"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="About" id="About">
-    <div class="container">
-      <div class="inspiration">
-        <p>
-          The project was inspired by the struggle observed when working with a
-          small organization that needed a HR software but the only available
-          solutions were premium versions of very expensive HR software.
-        </p>
-        <p>
-          Despite the high pricing, the software didn't really offer an
-          efficient way for employees to get registered into the system. Thus
-          the creation of HRClarity to ease the process of employees being
-          registered into the system and also making it easy to perform HR
-          functions such as approving or rejecting leave requests.
-        </p>
-      </div>
-
-      <div class="socials row">
-        <div class="team col-12 col-md-6">
-          <p>Team's social profile links:</p>
-          <ul>
-            <li>
-              <a href="https://twitter.com/aaquil_alex" target="_blank"
-                ><span class="icon icon-twitter"></span
-              ></a>
-            </li>
-            <li>
-              <a href="https://github.com/AlexWambui" target="_blank"
-                ><span class="icon icon-github"></span
-              ></a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/alexwambui/" target="_blank"
-                ><span class="icon icon-linkedin"></span
-              ></a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="project col-12 col-md-6">
-          <p>View the project on Github:</p>
-          <ul>
-            <li>
-              <a href="https://github.com/AlexAaqil/HRClarity" target="_blank"
-                ><span class="icon icon-github"></span
-              ></a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
   <footer>
-    <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h4>HRClariy</h4>
+        </div>
+
+        <div class="col">
+          <h4>About</h4>
+          <p>
+            Contribute on Github: <span class="icon icon-github"></span>
+            <a href="https://github.com/AlexAaqil/HRClarity"></a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright mt-4 border-top p-2">
       <p>&copy; 2023 | All rights reserved | Made by AlexAaqil</p>
     </div>
   </footer>

@@ -12,7 +12,7 @@ admin = Blueprint('admin', __name__)
 @admin.route('/admin/dashboard')
 @login_required
 def admin_dashboard():
-    employees_count = User.query.count()
+    employees_count = User.query.filter(User.user_level == 1).count()
     departments_count = Department.query.count()
     occupations_count = Occupation.query.count()
 
@@ -21,7 +21,7 @@ def admin_dashboard():
     announcements_count = Announcement.query.count()
 
     latest_pending_leaves = db.session.query(Leave, User).join(User).filter(Leave.status == 'pending').order_by(Leave.created_at.desc()).limit(4).all()
-    leaves_count = Leave.query.filter_by(status = 'pending').count()
+    leaves_count = Leave.query.count()
     return render_template('admin/dashboard.html', page_title='Admin Dashboard', employees_count=employees_count, departments_count=departments_count, occupations_count=occupations_count, announcements=announcements, announcements_count=announcements_count,latest_pending_leaves=latest_pending_leaves, leaves_count=leaves_count, user=current_user)
 
 

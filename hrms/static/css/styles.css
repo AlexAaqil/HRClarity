@@ -246,6 +246,7 @@ footer p {
   background: rgb(203, 238, 243);
   padding: 0.5em 1em;
   border-radius: 12px;
+  text-align: center;
 }
 .Dashboard .dashboard_wrapper .updates {
   display: grid;
@@ -258,7 +259,7 @@ footer p {
   padding: 0.5em 1em;
   border-radius: 12px;
 }
-.Dashboard .dashboard_wrapper .updates .update h1 {
+.Dashboard .dashboard_wrapper .updates .update h2 {
   font-size: 1.2em;
   font-weight: bold;
 }
