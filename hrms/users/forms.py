@@ -1,5 +1,6 @@
 from datetime import date
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email
 
@@ -11,6 +12,11 @@ class LoginForm(FlaskForm):
                              "placeholder": "Password", "class": "form-control"})
     submit = SubmitField('Login', render_kw={
                          "class": "btn btn-primary btn-block"})
+
+
+class UpdateProfilePictureForm(FlaskForm):
+    profile_picture = FileField('Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Save', render_kw={"class":"btn btn-primary btn-block"})
 
 
 class UpdatePasswordForm(FlaskForm):

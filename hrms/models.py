@@ -44,6 +44,7 @@ class User(db.Model, UserMixin):
     user_level = db.Column(db.Integer, nullable=False, default=1)
     user_type = db.Column(db.String(10), nullable=False, default='employee')
     password = db.Column(db.String(60), nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
 
     # Relationships
     leaves = db.relationship('Leave')
