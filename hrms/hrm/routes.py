@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import LoginManager, login_user, logout_user, current_user, login_required
+from flask_login import current_user, login_required
 from hrms import db, bcrypt
 from hrms.hrm.forms import CreateUserForm, UpdateEmployeeForm
 from hrms.models import User, Department, Occupation, Announcement, Leave

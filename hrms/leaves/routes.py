@@ -15,7 +15,7 @@ def employee_view_leaves():
         user = current_user.id
         leaves = Leave.query.filter_by(employee_id=user).order_by(Leave.created_at.desc()).all()
         leaves_count = len(leaves)
-        return render_template('employee/leaves.html', page_title='Employee Leaves', leaves=leaves, leaves_count=leaves_count)
+        return render_template('employee/leaves.html', page_title='Employee Leaves', leaves=leaves, leaves_count=leaves_count, user=current_user)
 
 
 @leaves.route('/admin/leaves')

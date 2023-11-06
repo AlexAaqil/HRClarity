@@ -1,5 +1,6 @@
+import os
 from datetime import datetime
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, current_app, request
 from flask_login import LoginManager, login_user, logout_user, current_user
 from hrms import db, bcrypt
 from .forms import LoginForm, UpdateProfilePictureForm, UpdatePasswordForm
@@ -38,9 +39,22 @@ def login():
     return render_template('login.html', page_title='Login', form=form)
 
 
+def get_profile_picture(employee_id):
+    user = User.query.get_or_404(employee_id)
+    profile_picture = url_for('static', filename='images/profile_pictures/' + user.image_file)
+    return profile_picture
+
+
+@user.route('/user/profile_settings/<int:employee_id>')
+def profile_settings(employee_id):
+    profile_picture = get_profile_picture(employee_id=employee_id)
+    return render_template('profile_settings.html', page_title='Profile Settings', profile_picture=profile_picture, user=current_user)
+
+
 @user.route('/user/update_password/<int:employee_id>', methods=['GET', 'POST'])
 def update_password(employee_id):
     employee = User.query.get_or_404(employee_id)
+    profile_picture = get_profile_picture(employee_id=employee_id)
     password_form = UpdatePasswordForm()
     if password_form.validate_on_submit():
         password = password_form.new_password.data
@@ -51,16 +65,23 @@ def update_password(employee_id):
         flash('Password has been updated!', 'success')
         return redirect(url_for('user.login'))
 
-    return render_template('update_password.html', page_title='Update Password', password_form=password_form, user=current_user)
+    return render_template('update_password.html', page_title='Update Password', profile_picture=profile_picture, password_form=password_form, user=current_user)
 
 
 @user.route('/user/update_profile/<int:employee_id>', methods=['GET', 'POST'])
 def update_profile(employee_id):
     employee = User.query.get_or_404(employee_id)
-    profile_picture = url_for('static', filename='images/profile_pictures/' + employee.image_file)
+    profile_picture = get_profile_picture(employee_id=employee_id)
     form = UpdateProfilePictureForm()
     if form.validate_on_submit():
         if form.profile_picture.data:
+            if employee.image_file and employee.image_file != 'default.jpg':
+                try:
+                    old_profile_picture = os.path.join(current_app.root_path, 'static/images/profile_pictures', employee.image_file)
+                    os.remove(old_profile_picture)
+                except Exception as e:
+                    print(f"Error deleting the old image: {e}")
+
             picture_file = save_picture(form.profile_picture.data)
             employee.image_file = picture_file
         db.session.commit()
