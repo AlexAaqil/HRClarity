@@ -1,0 +1,93 @@
+<aside>
+  <h1 class="mt-3">HRClarity</h1>
+
+  <div class="container text-center mt-4">
+    <img src="{{ url_for('static', filename='images/profile_pictures/' ~ current_user.image_file ) }}" alt="Employee" class="rounded-circle" width="90" height="90" />
+  </div>
+
+  <div class="links">
+    <ul>
+        {% if current_user.user_level > 1 %}
+            <li>
+                <a href="{{ url_for('admin.admin_dashboard') }}">
+                    <span class="icon icon-home"></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin.employees') }}">
+                    <span class="icon icon-users"></span>
+                    <span>Employees</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('leaves.admin_view_leaves') }}">
+                    <span class="icon icon-car"></span>
+                    <span>Leaves</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('announcements.view_announcements') }}">
+                    <span class="icon icon-speaker"></span>
+                    <span>Announcements</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><span class="icon icon-building"></span>Organization</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" href="{{ url_for('organization.departments') }}">
+                    <span class="icon icon-work"></span>
+                    <span>Departments</span>
+                </a>
+                <a class="dropdown-item text-dark" href="{{ url_for('organization.occupations') }}">
+                    <span class="icon icon-briefcase"></span>
+                    <span>Occupations</span></a>
+                </div>
+            </li>
+      {% endif %}
+
+      {% if current_user.user_level == 1 %}
+        <li>
+            <a href="{{ url_for('employee.employee_dashboard') }}">
+                <span class="icon icon-home"></span>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('leaves.employee_view_leaves') }}">
+                <span class="icon icon-car"></span>
+                <span>Leaves</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('announcements.employee_view_announcements') }}">
+                <span class="icon icon-speaker"></span>
+                <span>Announcements</span>
+            </a>
+        </li>
+      {% endif %}
+    </ul>
+
+
+    <ul>
+      <li>
+        <a href="{{ url_for('user.profile_settings', employee_id=current_user.id) }}">
+            <span class="icon icon-user"></span>
+            <span>{{ user.first_name }} {{ user.last_name }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('user.logout') }}">
+            <span class="icon icon-power-off"></span>
+            <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>

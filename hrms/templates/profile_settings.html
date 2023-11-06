@@ -1,0 +1,28 @@
+{% extends "main_layout.html" %} {% block body %}
+<section class="app">
+  {% include "aside.html" %}
+  <main>
+    <div class="main_container container-fluid login">
+      <div class="body">
+
+        <h3 class="text-center p-3">Settings</h3>
+
+        <div class="container row justify-content-center mt-4">
+            <div class="d-flex position-relative d-flex justify-content-center col col-lg-4 p-0">
+                <a href="{{ url_for('user.update_profile', employee_id=current_user.id) }}" class="stretched-link text-dark">
+                    <h5 class="bg-info text-white text-center p-4"><span class="icon icon-user"></span> Profile</h5>
+                </a>
+            </div>
+
+            <div class="d-flex position-relative d-flex justify-content-center col col-lg-4 p-0">
+                <a href="{{ url_for('user.update_password', employee_id=current_user.id) }}" class="stretched-link text-dark">
+                    <h5 class="bg-info text-white text-center p-4"><span class="icon icon-lock"></span> Password</h5>
+                </a>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</section>
+{% endblock body %}

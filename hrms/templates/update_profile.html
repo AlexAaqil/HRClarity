@@ -1,12 +1,28 @@
 {% extends "main_layout.html" %} {% block body %}
 <section class="app">
-  {% include 'admin/aside.html' %}
+  {% include "aside.html" %}
   <main>
     <div class="main_container container-fluid login">
       <div class="body">
-        <img src="{{ profile_picture }}" alt="User's Picture" width="100">
-        <h1>Hi {{ current_user.first_name }} {{ current_user.last_name }}</h1>
-        <p>{{ current_user.email_address }}</p>
+        <nav aria-label="breadcrumb" class="row justify-content-center mt-3 mb-3">
+            <ol class="breadcrumb col col-lg-11 d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="{{ url_for('user.profile_settings', employee_id=current_user.id) }}">Profile Settings</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col col-lg-2 text-center">
+                <img class="rounded-circle" src="{{ profile_picture }}" alt="User's Picture" width="110" height="110">
+            </div>
+
+            <div class="col col-lg-10 d-flex flex-column justify-content-center">
+                <h5>{{ current_user.first_name }} {{ current_user.last_name }}</h5>
+                <p>{{ current_user.email_address }}</p>
+            </div>
+        </div>
+
+        {% include 'notification_message.html' %}
 
         <form action="" method="post" enctype="multipart/form-data">
             <h1>Update Profile Picture</h1>
@@ -27,6 +43,7 @@
                 <div class="col">{{ form.submit }}</div>
             </div>
         </form>
+
       </div>
     </div>
   </main>
