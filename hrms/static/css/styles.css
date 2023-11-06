@@ -66,7 +66,7 @@ nav .container ul {
   align-items: center;
   justify-content: center;
   background: #c33764; /* fallback colour. Make sure this is just one solid colour. */
-  background: linear-gradient(rgba(29, 38, 113, 0.8), rgba(195, 55, 100, 0.8)), url("../images/app_background.jpg"); /* The least supported option. */
+  background: linear-gradient(rgba(2, 65, 184, 0.8), rgba(195, 55, 100, 0.8)), url("../images/app_background.jpg"); /* The least supported option. */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -124,10 +124,16 @@ footer {
   background: #000;
   color: #fff;
   padding: 1em 0;
-  text-align: center;
+}
+footer h4 {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 footer p {
   margin: unset;
+}
+footer .copyright {
+  text-align: center;
 }
 
 .Authentication {
