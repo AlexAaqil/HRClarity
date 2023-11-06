@@ -20,7 +20,7 @@ nav .container ul {
   align-items: center;
 }
 
-nav {
+.home_navbar {
   background: #fff;
   box-shadow: 1px 1px 10px rgb(129, 129, 129);
   height: 8vh;
@@ -28,30 +28,30 @@ nav {
   top: 0;
   z-index: 10;
 }
-nav .container {
+.home_navbar .container {
   justify-content: space-between;
 }
-nav .container a {
+.home_navbar .container a {
   color: #000;
   font-weight: bold;
   text-decoration: none;
 }
-nav .container a:hover {
+.home_navbar .container a:hover {
   color: rgb(13, 167, 218);
 }
-nav .container ul {
+.home_navbar .container ul {
   list-style-type: none;
   margin: 0;
 }
-nav .container ul li {
+.home_navbar .container ul li {
   margin: 0 1em;
 }
-nav .container ul li .action_btn {
+.home_navbar .container ul li .action_btn {
   border: 1px solid black;
   border-radius: 32px;
   padding: 6px 20px;
 }
-nav .container ul li .action_btn:hover {
+.home_navbar .container ul li .action_btn:hover {
   background: #c33764;
   color: white;
   border: 1px solid #c33764;
