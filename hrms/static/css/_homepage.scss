@@ -1,8 +1,8 @@
 nav,
 nav .container,
 nav .container ul {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .home_navbar {
@@ -17,12 +17,12 @@ nav .container ul {
     justify-content: space-between;
 
     a {
-        color: #000;
-        font-weight: bold;
-        text-decoration: none;
-        &:hover {
-            color: rgb(13, 167, 218);
-        }
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      &:hover {
+        color: rgb(13, 167, 218);
+      }
     }
 
     ul {
@@ -33,15 +33,15 @@ nav .container ul {
         margin: 0 1em;
 
         .action_btn {
-            border: 1px solid black;
-            border-radius: 32px;
-            padding: 6px 20px;
-            &:hover {
-                background: #c33764;
-                color: white;
-                border: 1px solid #c33764;
-                transition: background 0.5s ease-in-out;
-            }
+          border: 1px solid black;
+          border-radius: 32px;
+          padding: 6px 20px;
+          &:hover {
+            background: #c33764;
+            color: white;
+            border: 1px solid #c33764;
+            transition: background 0.5s ease-in-out;
+          }
         }
       }
     }
@@ -57,7 +57,7 @@ nav .container ul {
     align-items: center;
     justify-content: center;
     background: #c33764; /* fallback colour. Make sure this is just one solid colour. */
-    background: linear-gradient(rgb(2,65,184, 0.8), rgba(195, 55, 100, 0.8)),
+    background: linear-gradient(rgb(2, 65, 184, 0.8), rgba(195, 55, 100, 0.8)),
       url("../images/app_background.jpg"); /* The least supported option. */
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,49 +78,49 @@ nav .container ul {
       font-size: 1.3em;
     }
   }
-}
 
-.Features {
-  padding: 2em 2.5em;
+  .About {
+    padding: 1em 2.5em;
 
-  .feature {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2em;
-    margin: 0 0 3em;
-
-    .details {
+    ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+      gap: 2.5em;
 
-    .image {
-      img {
-        width: 100%;
-      }
-    }
-
-    &:nth-of-type(2) {
-      grid-template-columns: 2fr 1fr;
-      .image {
-        order: -1;
+      li {
+        a {
+          font-size: 1.8em;
+        }
       }
     }
   }
-}
 
-.About {
-  padding: 1em 2.5em;
+  .Features {
+    padding: 2em 2.5em;
 
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 2.5em;
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2em;
+      margin: 0 0 3em;
 
-    li {
-      a {
-        font-size: 1.8em;
+      .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .image {
+        img {
+          width: 100%;
+        }
+      }
+
+      &:nth-of-type(2) {
+        grid-template-columns: 2fr 1fr;
+        .image {
+          order: -1;
+        }
       }
     }
   }
@@ -130,6 +130,16 @@ footer {
   background: #000;
   color: #fff;
   padding: 1em 0;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        text-decoration: none;
+        color:rgb(13, 167, 218);
+    }
+  }
 
   h4 {
     font-size: 1.2em;

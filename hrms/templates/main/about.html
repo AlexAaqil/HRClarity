@@ -1,0 +1,102 @@
+{% extends "main_layout.html" %} {% block body %} {% include 'main/navbar.html' %}
+<section class="About">
+  <div class="jumbotron bg-primary text-white mb-5 hero">
+    <div class="container">
+        <h2 class="text-center">Our mission is to enhance the efficiency Human Resource Managers when managing the greatest asset of their organization, the employees.</h2>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5 core_values">
+    <h3 class="text-center mb-5">Our Core Values</h3>
+    <div class="container row">
+        <div class="col col-lg-6 d-flex align-items-center">
+            <div class="icon text-center">
+                <span class="icon icon-event_busy"></span>
+            </div>
+            <div class="text">
+                <h4>Resourcefulness</h4>
+                <p>Employees are the greatest asset and managing them effectively is the most challenging part. Not to worry though because we help you through every step of the way.</p>
+            </div>
+        </div>
+
+        <div class="col col-lg-6 d-flex align-items-center">
+            <div class="icon text-center">
+                <span class="icon icon-chain"></span>
+            </div>
+            <div class="text">
+                <h4>Integrity</h4>
+                <p>Our word is our bond. We do what we promise by making the right choices and not the easy or popular choices.</p>
+            </div>
+        </div>
+
+        <div class="col col-lg-6 d-flex align-items-center">
+            <div class="icon text-center">
+                <span class="icon icon-lightbulb-o"></span>
+            </div>
+            <div class="text">
+                <h4>Curiosity</h4>
+                <p>We are well-experienced but we don’t know everything. That’s why we keep an open mind and are always ready to try out new things..</p>
+            </div>
+        </div>
+
+        <div class="col col-lg-6 d-flex align-items-center">
+            <div class="icon text-center">
+                <span class="icon icon-lightbulb-o"></span>
+            </div>
+            <div class="text">
+                <h4>Curiosity</h4>
+                <p>Our word is our bond. We do what we promise by making the right choices and not the easy or popular choices.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5 the_team">
+    <h3 class="text-center">Meet the Team</h3>
+    <p class="text-center mb-5">Team work is dream work</p>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="Profile_Pic" class="rounded-circle" width="100" height="100">
+        </div>
+
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="Profile_Pic" class="rounded-circle" width="100" height="100">
+        </div>
+
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="Profile_Pic" class="rounded-circle" width="100" height="100">
+        </div>
+
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="Profile_Pic" class="rounded-circle" width="100" height="100">
+        </div>
+
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="Profile_Pic" class="rounded-circle" width="100" height="100">
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5 partners">
+    <h3 class="text-center">Our Partners & Investors</h3>
+    <p class="text-center mb-5">We are trusted by many.</p>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h5>Naomi's Village</h5>
+        </div>
+
+        <div class="col text-center">
+            <h5>Aaqil Softwares</h5>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5 location">
+    <h3 class="text-center">Find Us</h3>
+    <p class="text-center">Our office is located at the 15th floor, Garden City Business Park,</p>
+    <p class="text-center">Garden City, Nairobi.</p>
+  </div>
+
+  {% include 'main/footer.html' %}
+</section>
+{% endblock body %}
