@@ -1,3 +1,7 @@
 *.pyc
 
 .env
+
+hrms/static/images/profile_pictures/*
+
+instance/*
